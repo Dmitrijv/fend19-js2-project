@@ -25,3 +25,7 @@ Syftet med projektet är att vidareutveckla de studerandes kunskaper och färdig
 9. Man ska kunna tömma varukorgen.
 
 10. Vid beställning visa bekräftelse på enny webbsida. Visa alla detaljer om köpet t.ex. produktnamnen, priser, bilder och totalsumma.
+
+### Bonus:
+
+11. Lägg till möjligheten att spara beställningsinformation som PDF.
