@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACAA,AAAA,CAAC,CAAC;EACE,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,CAAC;EACT,UAAU,EAAE,UAAU;CACzB",
+    "sources": [
+        "../sass/shop.scss",
+        "../sass/_global.scss"
+    ],
+    "names": [],
+    "file": "shop.css"
+}
