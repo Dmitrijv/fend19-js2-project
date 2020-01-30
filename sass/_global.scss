@@ -3,3 +3,19 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+header {
+    width: 100vw;
+    height: 10vh;
+    background-color: lightgray;
+}
+
+main {
+    min-height: 80vh;
+}
+
+footer {
+    width: 100vw;
+    height: 10vh;
+    background-color: lightgreen;
+}
