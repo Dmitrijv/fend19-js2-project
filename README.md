@@ -4,24 +4,24 @@ Syftet med projektet är att vidareutveckla de studerandes kunskaper och färdig
 ## Kravspecifikation
 
 ### För G-nivå
-1. Allt skall utvecklas från scratchi HTML, CSSoch JavaScript. Ni får kopiera CSS-kod från https://getbootstrap.com/. Ni får använda jQuery Core men intejQuery Plugins.
+1. Allt skall utvecklas från scratch i HTML, CSS och JavaScript. Ni får kopiera CSS-kod från https://getbootstrap.com/. Ni får använda jQuery Core men intejQuery Plugins.
 
-2. Skapa en webbsidasom visar ca10 olika valfria produkter. Produkterna måste hämtas från enJSON-fil.
+2. Skapa en webbsida som visar ca10 olika valfria produkter. Produkterna måste hämtas från enJSON-fil.
 
 3. Skapa en JSON-fil för att lagra produkterna. Skapa en länk till JSON-filen längst ner på sidan.
 
-4. Skapa en varukorg.För G-nivå skallman kunnalägga tillen styckav varje produkti varukorgen.
+4. Skapa en varukorg. För G-nivå skall man kunna lägga till en styck av varje produkt i varukorgen.
 
-5. Visa produktnamn och prisi varukorgen.Visa totalsumma i varukorgen.
+5. Visa produktnamn och pris i varukorgen. Visa totalsumma i varukorgen.
 
-6. Lägg tillen beställningsknapp i varukorgen.Vid beställning(när kunden klickar på beställningsknappen),visaen bekräftelsepå skärmenoch töm varukorgen.
+6. Lägg till en beställningsknapp i varukorgen. Vid beställning (när kunden klickar på beställningsknappen), visa en bekräftelse på skärmen och töm varukorgen.
 
 ### För VG-nivå:
 
-7. En kund skallkunna välja flera stycken produkterav samma sort,från en dropdown-listaeller ett input-fält.Man skallävenkunna ändra antal i varukorgen.
+7. En kund skall kunna välja flera stycken produkter av samma sort, från en dropdown-lista eller ett input-fält. Man skall även kunna ändra antal i varukorgen.
 
-8. Man skallkunna ta bortenstakaprodukterfrån varukorgen.
+8. Man skall kunna ta bort enstaka produkter från varukorgen.
 
 9. Man ska kunna tömma varukorgen.
 
-10. Vid beställning visa bekräftelse på enny webbsida.Visa alla detaljer om köpett.ex.produktnamnen,priser, bilderochtotalsumma.
+10. Vid beställning visa bekräftelse på enny webbsida. Visa alla detaljer om köpet t.ex. produktnamnen, priser, bilder och totalsumma.
