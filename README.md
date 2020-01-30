@@ -4,7 +4,7 @@ Syftet med projektet är att vidareutveckla de studerandes kunskaper och färdig
 ## Kravspecifikation
 
 ### För G-nivå
-1. Allt skall utvecklas från scratch i HTML, CSS och JavaScript. Ni får kopiera CSS-kod från https://getbootstrap.com/. Ni får använda jQuery Core men intejQuery Plugins.
+1. Allt skall utvecklas från scratch i HTML, CSS och JavaScript. Ni får kopiera CSS-kod från https://getbootstrap.com/. Ni får använda jQuery Core men inte jQuery Plugins.
 
 2. Skapa en webbsida som visar ca10 olika valfria produkter. Produkterna måste hämtas från enJSON-fil.
 
