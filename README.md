@@ -1,5 +1,5 @@
 # JavaScript 2 – Projektarbete – Skapa en varukorg
-Syftet med projektetär att vidareutveckla de studerandes kunskaper och färdigheter i JavaScript-kodning för frontend-utveckling.
+Syftet med projektet är att vidareutveckla de studerandes kunskaper och färdigheter i JavaScript-kodning för frontend-utveckling.
 
 # Kravspecifikation
 1. Allt skall utvecklas från scratchi HTML, CSSoch JavaScript. Ni får kopiera CSS-kod från https://getbootstrap.com/. Ni får använda jQuery Core men intejQuery Plugins.
