@@ -7,8 +7,9 @@
 
 header {
   width: 100vw;
-  height: 10vh;
+  min-height: 10vh;
   background-color: lightgray;
+  text-align: center;
 }
 
 main {
@@ -16,8 +17,17 @@ main {
 }
 
 footer {
+  text-align: center;
   width: 100vw;
-  height: 10vh;
+  min-height: 10vh;
   background-color: lightgreen;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer p + p {
+  margin-top: 12px;
 }
 /*# sourceMappingURL=shop.css.map */

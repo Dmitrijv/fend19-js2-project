@@ -6,8 +6,9 @@
 
 header {
     width: 100vw;
-    height: 10vh;
+    min-height: 10vh;
     background-color: lightgray;
+    text-align: center;
 }
 
 main {
@@ -15,7 +16,14 @@ main {
 }
 
 footer {
+    text-align: center;
     width: 100vw;
-    height: 10vh;
+    min-height: 10vh;
     background-color: lightgreen;
+    p {
+        margin: 0;
+    }
+    p+p{
+        margin-top: 12px;
+    }
 }
