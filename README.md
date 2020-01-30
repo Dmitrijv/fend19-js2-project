@@ -1,7 +1,9 @@
 # JavaScript 2 – Projektarbete – Skapa en varukorg
 Syftet med projektet är att vidareutveckla de studerandes kunskaper och färdigheter i JavaScript-kodning för frontend-utveckling.
 
-# Kravspecifikation
+## Kravspecifikation
+
+### För G-nivå
 1. Allt skall utvecklas från scratchi HTML, CSSoch JavaScript. Ni får kopiera CSS-kod från https://getbootstrap.com/. Ni får använda jQuery Core men intejQuery Plugins.
 
 2. Skapa en webbsidasom visar ca10 olika valfria produkter. Produkterna måste hämtas från enJSON-fil.
@@ -12,7 +14,9 @@ Syftet med projektet är att vidareutveckla de studerandes kunskaper och färdig
 
 5. Visa produktnamn och prisi varukorgen.Visa totalsumma i varukorgen.
 
-6. Lägg tillen beställningsknapp i varukorgen.Vid beställning(när kunden klickar på beställningsknappen),visaen bekräftelsepå skärmenoch töm varukorgen.För VG-nivå skallni dessutom arbeta med följande
+6. Lägg tillen beställningsknapp i varukorgen.Vid beställning(när kunden klickar på beställningsknappen),visaen bekräftelsepå skärmenoch töm varukorgen.
+
+### För VG-nivå:
 
 7. En kund skallkunna välja flera stycken produkterav samma sort,från en dropdown-listaeller ett input-fält.Man skallävenkunna ändra antal i varukorgen.
 
