@@ -3,9 +3,7 @@ Syftet med projektetär att vidareutveckla de studerandes kunskaper och färdigh
 
 # Kravspecifikation
 1. Allt skall utvecklas från scratchi HTML, CSSoch JavaScript. Ni får kopiera CSS-kod från https://getbootstrap.com/. Ni får använda jQuery Core men intejQuery Plugins.
-
 2. Skapa en webbsidasom visar ca10 olika valfria produkter.Produkterna måste hämtas från enJSON-fil.
-
 3.Skapa en JSON-fil för att lagra produkterna.Skapa en länk till JSON-filen längst ner på sidan.
 
 4.Skapa en varukorg.För G-nivå skallman kunnalägga tillen styckav varje produkti varukorgen.
