@@ -10,5 +10,51 @@ div.shop-container {
 
   section.shopping-cart {
     grid-area: shoppingCart;
+
+    .cart-item:hover {
+      background-color: antiquewhite;
+    }
+
+    .cart-item {
+      position: relative;
+      padding: 0 15px 0 15px;
+
+      input.cart-item-qty {
+        max-width: 60px;
+        border-radius: 3px;
+        background-color: #fff;
+        color: #555;
+        border: 1px solid #ccc;
+        padding: 4px 0 3px 6px;
+        box-shadow: 0 1px 0px rgba(0, 0, 0, 0.075) inset;
+      }
+
+      button.remove-cart-item {
+        position: absolute;
+        top: -15px;
+        right: 0px;
+        font-weight: bold;
+        font-size: 20px;
+        margin: 5px;
+        background: 0 0;
+        border: none;
+        text-transform: none;
+      }
+
+      button.remove-cart-item:hover {
+        color: red;
+        border: 0;
+      }
+    }
+
+    .cart-empty-message {
+      display: none;
+      text-align: center;
+      color: #999;
+    }
+
+    p.subtotal-label {
+      font-weight: bold;
+    }
   }
 }

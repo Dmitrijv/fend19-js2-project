@@ -33,13 +33,31 @@
 
     <main>
       <div class="shop-container">
-        <section class="product-panel white-panel">
+        <section class="white-panel product-panel">
           <div class="panel-heading">Products</div>
           <div class="panel-body"></div>
         </section>
-        <section class="shopping-cart white-panel">
-          <div class="panel-heading">Shopping Cart</div>
+
+        <section class="white-panel shopping-cart">
+          <div class="panel-heading">Shopping Cart <span id="cart-item-count">1</span></div>
+
           <div class="panel-body">
+            <div class="cart-empty-message">No items in cart</div>
+            <div class="cart-item-list">
+              <div class="cart-item">
+                <h4>Brown egg</h4>
+                <div class="cart-item-summary">
+                  <span id="item-1-price">50 kr</span> x
+                  <input type="number" min="1" max="1000" class="cart-item-qty" value="1" /> =
+                  <span id="item-1-stack-price">50 kr</span>
+                </div>
+                <button class="remove-cart-item">x</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-footer">
+            <p class="subtotal-label">Subtotal: <span id="subtotal-value">0.00 kr</span></p>
             <button type="button" class="btn btn-secondary">Checkout</button>
             <button type="button" class="btn btn-secondary">Clear</button>
           </div>

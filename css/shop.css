@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  background-color: #f2f2f2;
+  background-color: #f8f8f8;
 }
 
 main {
@@ -42,7 +42,22 @@ main {
 }
 
 .white-panel div.panel-body {
-  padding: 15px;
+  padding: 15px 0 15px 0;
+}
+
+.white-panel div.panel-footer {
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+button {
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  border: 0;
 }
 
 h1,
@@ -122,6 +137,53 @@ div.shop-container section.shopping-cart {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: shoppingCart;
+}
+
+div.shop-container section.shopping-cart .cart-item:hover {
+  background-color: antiquewhite;
+}
+
+div.shop-container section.shopping-cart .cart-item {
+  position: relative;
+  padding: 0 15px 0 15px;
+}
+
+div.shop-container section.shopping-cart .cart-item input.cart-item-qty {
+  max-width: 60px;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #555;
+  border: 1px solid #ccc;
+  padding: 4px 0 3px 6px;
+  -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.075) inset;
+          box-shadow: 0 1px 0px rgba(0, 0, 0, 0.075) inset;
+}
+
+div.shop-container section.shopping-cart .cart-item button.remove-cart-item {
+  position: absolute;
+  top: -15px;
+  right: 0px;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 5px;
+  background: 0 0;
+  border: none;
+  text-transform: none;
+}
+
+div.shop-container section.shopping-cart .cart-item button.remove-cart-item:hover {
+  color: red;
+  border: 0;
+}
+
+div.shop-container section.shopping-cart .cart-empty-message {
+  display: none;
+  text-align: center;
+  color: #999;
+}
+
+div.shop-container section.shopping-cart p.subtotal-label {
+  font-weight: bold;
 }
 
 footer {
