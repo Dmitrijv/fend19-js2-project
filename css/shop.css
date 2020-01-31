@@ -26,20 +26,7 @@ h6 {
 
 main {
   min-height: 80vh;
-}
-
-footer {
-  text-align: center;
-  min-height: 10vh;
-  background-color: lightgray;
-}
-
-footer p {
-  margin: 0;
-}
-
-footer p + p {
-  margin-top: 12px;
+  /* stretch main element untill we have something to fill it with */
 }
 
 header {
@@ -85,5 +72,30 @@ header nav ul li:hover,
 header nav a,
 header nav a:hover {
   color: white;
+}
+
+footer {
+  text-align: center;
+  color: white;
+  padding: 15px;
+  margin-top: 1px;
+  background-color: #516556;
+}
+
+footer a {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: white;
+}
+
+footer p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+footer p + p {
+  margin-top: 0px;
 }
 /*# sourceMappingURL=shop.css.map */
