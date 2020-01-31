@@ -12,7 +12,37 @@ html {
 }
 
 body {
-  background-color: #efefef;
+  background-color: #f2f2f2;
+}
+
+main {
+  max-width: 1020px;
+  margin: 2vh auto 0 auto;
+}
+
+.white-panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.white-panel div.panel-heading {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  padding: 10px 15px;
+  border-bottom: 1px solid lightgray;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.white-panel div.panel-body {
+  padding: 15px;
 }
 
 h1,
@@ -32,7 +62,6 @@ main {
 header {
   background-color: #3b455e;
   padding: 5px 0px 5px 0px;
-  margin-bottom: 2vh;
 }
 
 header h1 {
@@ -72,6 +101,27 @@ header nav ul li:hover,
 header nav a,
 header nav a:hover {
   color: white;
+}
+
+div.shop-container {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1vw;
+  -ms-grid-columns: 7fr 3fr;
+      grid-template-columns: 7fr 3fr;
+      grid-template-areas: "productContainer shoppingCart";
+}
+
+div.shop-container section.product-panel {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: productContainer;
+}
+
+div.shop-container section.shopping-cart {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: shoppingCart;
 }
 
 footer {

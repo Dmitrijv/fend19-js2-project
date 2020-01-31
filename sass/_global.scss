@@ -11,7 +11,37 @@ html {
 }
 
 body {
-  background-color: rgb(239, 239, 239);
+  background-color: rgb(242, 242, 242);
+}
+
+main {
+  max-width: $max-body-width;
+  margin: 2vh auto 0 auto;
+  // background-color: yellow;
+}
+
+.white-panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+
+  div.panel-heading {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    padding: 10px 15px;
+    border-bottom: 1px solid lightgray;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  div.panel-body {
+    padding: 15px;
+  }
 }
 
 h1,
