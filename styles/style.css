@@ -6,7 +6,6 @@
 }
 
 header {
-  width: 100vw;
   min-height: 10vh;
   background-color: lightgray;
   text-align: center;
@@ -18,7 +17,6 @@ main {
 
 footer {
   text-align: center;
-  width: 100vw;
   min-height: 10vh;
   background-color: lightgray;
 }
@@ -30,4 +28,4 @@ footer p {
 footer p + p {
   margin-top: 12px;
 }
-/*# sourceMappingURL=shop.css.map */
+/*# sourceMappingURL=style.css.map */
