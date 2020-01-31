@@ -58,6 +58,16 @@ button::-moz-focus-inner {
   border: 0;
 }
 
+input[type="number"] {
+  max-width: 60px;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #555;
+  border: 1px solid #ccc;
+  padding: 4px 0 3px 6px;
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.075) inset;
+}
+
 h1,
 h2,
 h3,

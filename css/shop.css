@@ -60,6 +60,17 @@ button::-moz-focus-inner {
   border: 0;
 }
 
+input[type="number"] {
+  max-width: 60px;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #555;
+  border: 1px solid #ccc;
+  padding: 4px 0 3px 6px;
+  -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.075) inset;
+          box-shadow: 0 1px 0px rgba(0, 0, 0, 0.075) inset;
+}
+
 h1,
 h2,
 h3,
@@ -139,6 +150,12 @@ div.shop-container section.shopping-cart {
   grid-area: shoppingCart;
 }
 
+div.shop-container section.shopping-cart .panel-heading #cart-item-count {
+  background-color: #555;
+  color: white;
+  padding: 0 4px;
+}
+
 div.shop-container section.shopping-cart .cart-item:hover {
   background-color: antiquewhite;
 }
@@ -146,17 +163,6 @@ div.shop-container section.shopping-cart .cart-item:hover {
 div.shop-container section.shopping-cart .cart-item {
   position: relative;
   padding: 0 15px 0 15px;
-}
-
-div.shop-container section.shopping-cart .cart-item input.cart-item-qty {
-  max-width: 60px;
-  border-radius: 3px;
-  background-color: #fff;
-  color: #555;
-  border: 1px solid #ccc;
-  padding: 4px 0 3px 6px;
-  -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.075) inset;
-          box-shadow: 0 1px 0px rgba(0, 0, 0, 0.075) inset;
 }
 
 div.shop-container section.shopping-cart .cart-item button.remove-cart-item {
