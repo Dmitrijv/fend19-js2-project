@@ -1,0 +1,47 @@
+header {
+  background-color: #3b455e;
+  padding: 5px 0px 5px 0px;
+  margin-bottom: 1px;
+  z-index: 2;
+}
+
+header > h1 {
+  box-sizing: border-box;
+  max-width: $max-body-width;
+  padding: 2px 10px 0px 10px;
+  margin: 0px auto 0px auto;
+  font-size: 23px;
+  color: white;
+}
+
+header nav {
+  box-sizing: border-box;
+  max-width: $max-body-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 6px 10px 4px 10px;
+  z-index: 10; /* Make sure this stays on top of other stuff */
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul li {
+    display: inline;
+    margin-right: 6px;
+    font-size: 16px;
+  }
+
+  ul li:hover,
+  a.active {
+    text-decoration: underline;
+  }
+
+  ul li:hover,
+  a,
+  a:hover {
+    color: white;
+  }
+}

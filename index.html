@@ -1,48 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>FEND19 - Project - Shopping Cart</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
 
-    <link rel="stylesheet" href="css/shop.css">
+    <link rel="stylesheet" href="css/shop.css" />
+  </head>
 
-</head>
-
-<body>
-
-    <header>Header Yo!</header>
+  <body>
+    <header>
+      <h1>FEND19 - JavaSript 2 - Grupp 7 - Project</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="./" class="active">Shop</a>
+          </li>
+          <li>
+            <a href="./order.html">Order</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <main>
+      <section class="shoppingCart">
+        <h2>Shopping Cart</h2>
+        <div class="cartItemContainer"></div>
+        <button type="button" class="btn btn-secondary">Confirm purchase</button>
+      </section>
 
-        <section class="shoppingCart">
-            <h2>Shopping Cart</h2>
-            <div class="cartItemContainer">
-            </div>
-            <button type="button" class="btn btn-secondary">Confirm purchase</button>
-        </section>
-
-        <section class="shopItems"></section>
-
+      <section class="shopItems"></section>
     </main>
     <footer>
-        <h2><a href="/json/inventory.json" target="_blank">inventory.json</a></h2>
-        <p>JavaSript2 - Projekt</p>
-        <p>FEND19, Grupp 7, Nackademin</p>
-        <p>2020-01-30</p>
+      <h2><a href="/json/inventory.json" target="_blank">inventory.json</a></h2>
+      <p>JavaSript2 - Projekt</p>
+      <p>FEND19, Grupp 7, Nackademin</p>
+      <p>2020-01-30</p>
     </footer>
 
     <!-- dependencies -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"
+    ></script>
 
     <!-- shop -->
     <script src="js/main.js"></script>
-
-</body>
-
+  </body>
 </html>
