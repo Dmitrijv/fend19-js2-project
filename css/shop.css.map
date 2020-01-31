@@ -2,9 +2,9 @@
     "version": 3,
     "mappings": "ACAA,AAAA,CAAC,CAAC;EACE,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,CAAC;EACT,UAAU,EAAE,UAAU;CACzB;;AAED,AAAA,MAAM,CAAC;EAEH,UAAU,EAAE,IAAI;EAChB,gBAAgB,EAAE,SAAS;EAC3B,UAAU,EAAE,MAAM;CACrB;;AAED,AAAA,IAAI,CAAC;EACD,UAAU,EAAE,IAAI;CACnB;;AAED,AAAA,MAAM,CAAC;EACH,UAAU,EAAE,MAAM;EAElB,UAAU,EAAE,IAAI;EAChB,gBAAgB,EAAE,SAAS;CAO9B;;AAXD,AAKI,MALE,CAKF,CAAC,CAAC;EACE,MAAM,EAAE,CAAC;CACZ;;AAPL,AAQI,MARE,CAQF,CAAC,GAAC,CAAC,CAAA;EACC,UAAU,EAAE,IAAI;CACnB",
     "sources": [
-        "style.scss",
-        "_global.scss"
+        "../sass/shop.scss",
+        "../sass/_global.scss"
     ],
     "names": [],
-    "file": "style.css"
+    "file": "shop.css"
 }
