@@ -172,7 +172,6 @@ div.shop-container section.shopping-cart .cart-item button.remove-cart-item {
 }
 
 div.shop-container section.shopping-cart .cart-item button.remove-cart-item:hover {
-  color: red;
   border: 0;
 }
 
