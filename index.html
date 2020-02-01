@@ -1,76 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>FEND19 - Project - Shopping Cart</title>
 
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>FEND19 - Project - Shopping Cart</title>
 
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
 
-  <body>
-    <header>
-      <h1>FEND19 - JavaScript 2 - Grupp 7 - Project</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="./" class="active">Shop</a>
-          </li>
-          <li>
-            <a href="./order.html">Order</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
 
-    <main>
-      <div class="shop-container">
-        <section class="white-panel product-panel">
-          <div class="panel-heading">Products</div>
-          <div class="panel-body">
-            <div class="product-card in-basket">
-              <img class="img-fluid product-cover" src="img/product/product-1.jpg" alt="product1" />
-              <h4 id="product-1-name">Brown eggs</h4>
-              <p id="product-1-description">Raw organic brown eggs in a basket</p>
-              <hr />
-              <p class="product-price" id="prouct-1-price">30 kr</p>
-              <div>
-                <button type="button" value="" class="btn btn-success">Add to cart</button>
-                <input type="number" min="1" max="1000" class="cart-item-qty" value="1" />
-              </div>
+<body>
+  <header>
+    <h1>FEND19 - JavaScript 2 - Grupp 7 - Project</h1>
+    <nav>
+      <ul>
+        <li>
+          <a href="./" class="active">Shop</a>
+        </li>
+        <li>
+          <a href="./order.html">Order</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="shop-container">
+      <section class="white-panel product-panel">
+        <div class="panel-heading">Products</div>
+        <div class="panel-body">
+          <div class="product-card in-basket">
+            <img class="img-fluid product-cover" src="img/product/product-1.jpg" alt="product1" />
+            <h4 id="product-1-name">Brown eggs</h4>
+            <p id="product-1-description">Raw organic brown eggs in a basket</p>
+            <hr />
+            <p class="product-price" id="prouct-1-price">30 kr</p>
+            <div>
+              <button type="button" value="" class="btn btn-success">Add to cart</button>
+              <input type="number" min="1" max="1000" class="cart-item-qty" value="1" />
             </div>
-            <div class="product-card">123</div>
-            <div class="product-card">123</div>
-            <div class="product-card">123</div>
-
-            <div class="product-card">
-              <img class="img-fluid product-cover" src="img/product/product-2.jpg" alt="product2" />
-              <h4 id="product-2-name">Sweet stawberry</h4>
-              <p id="product-2-description">Sweet fresh stawberry on the wooden table</p>
-              <hr />
-              <p class="product-price" id="prouct-2-price">40 kr</p>
-              <div>
-                <button type="button" value="" class="btn btn-success">Add to cart</button>
-                <input type="number" min="1" max="1000" class="cart-item-qty" value="1" />
-              </div>
-            </div>
-
-            <div class="product-card">123</div>
-            <div class="product-card">123</div>
-            <div class="product-card">123</div>
-            <div class="product-card">123</div>
           </div>
-        </section>
+          <div class="product-card">123</div>
+          <div class="product-card">123</div>
+          <div class="product-card">123</div>
 
-        <section class="white-panel shopping-cart">
+          <div class="product-card">
+            <img class="img-fluid product-cover" src="img/product/product-2.jpg" alt="product2" />
+            <h4 id="product-2-name">Sweet stawberry</h4>
+            <p id="product-2-description">Sweet fresh stawberry on the wooden table</p>
+            <hr />
+            <p class="product-price" id="prouct-2-price">40 kr</p>
+            <div>
+              <button type="button" value="" class="btn btn-success">Add to cart</button>
+              <input type="number" min="1" max="1000" class="cart-item-qty" value="1" />
+            </div>
+          </div>
+
+          <div class="product-card">123</div>
+          <div class="product-card">123</div>
+          <div class="product-card">123</div>
+          <div class="product-card">123</div>
+        </div>
+      </section>
+
+      <section class="white-panel shopping-cart">
+        <div class="shopping-cart-content-wrapper">
           <div class="panel-heading">Shopping Cart <span id="cart-item-count">1</span></div>
 
           <div class="panel-body">
@@ -93,25 +91,24 @@
             <button type="button" class="btn btn-secondary">Checkout</button>
             <button type="button" class="btn btn-secondary">Clear</button>
           </div>
-        </section>
-      </div>
-    </main>
+        </div>
+      </section>
+    </div>
+  </main>
 
-    <footer>
-      <a href="/json/inventory.json" target="_blank">inventory.json</a>
-      <p>FEND19 - JavaScript 2 - Project</p>
-      <p>Grupp 7, Nackademin</p>
-      <p>2020-01-31</p>
-    </footer>
+  <footer>
+    <a href="/json/inventory.json" target="_blank">inventory.json</a>
+    <p>FEND19 - JavaScript 2 - Project</p>
+    <p>Grupp 7, Nackademin</p>
+    <p>2020-01-31</p>
+  </footer>
 
-    <!-- dependencies -->
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-      crossorigin="anonymous"
-    ></script>
+  <!-- dependencies -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
 
-    <!-- shop -->
-    <script src="js/main.js"></script>
-  </body>
+  <!-- shop -->
+  <script src="js/main.js"></script>
+</body>
+
 </html>
