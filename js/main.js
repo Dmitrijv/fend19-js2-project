@@ -17,7 +17,7 @@ function loadStore(productsJson) {
     htmlPayload += `
     <div class="product-card">
         <img class="img-fluid product-cover" src="img/product/product-${item.id}.jpg" alt="product${item.id}" />
-        <h4 id="product-${item.id}-name">${item.name}</h4>
+        <h4 id="product-${item.id}-name">${item.title}</h4>
         <p id="product-2-description">${item.description}</p>
         <hr />
         <p class="product-price" id="prouct-2-price">${item.price}</p>
