@@ -26,5 +26,5 @@ function loadStore(productsJson) {
         </div>
     </div>`;
   });
-  productPanel.innerHTML = htmlPayload || "Failed to load store items.";
+  productPanel.innerHTML = htmlPayload.length > 0 ? htmlPayload : "Failed to load store items.";
 }
