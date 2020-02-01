@@ -31,5 +31,3 @@ Syftet med projektet är att vidareutveckla de studerandes kunskaper och färdig
 ### Bonus:
 
 11. Lägg till möjligheten att spara beställningsinformation som PDF.
-
-12. Testing discord bot.
