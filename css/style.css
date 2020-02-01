@@ -156,6 +156,10 @@ footer a {
   color: white;
 }
 
+footer a:hover {
+  color: lightgray;
+}
+
 footer p {
   margin: 0;
   font-size: 16px;
