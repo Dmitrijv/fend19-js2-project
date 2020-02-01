@@ -1,0 +1,24 @@
+@import "product-card";
+@import "shopping-cart";
+
+div.shop-container {
+  display: grid;
+  grid-gap: 1vw;
+  grid-template-columns: 7fr 3fr;
+  grid-template-areas:
+    "productContainer shoppingCart"
+    "productContainer . ";
+
+  section.product-panel {
+    grid-area: productContainer;
+    div.panel-body {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+    }
+  }
+
+  section.shopping-cart {
+    grid-area: shoppingCart;
+  }
+}

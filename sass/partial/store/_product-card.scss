@@ -1,0 +1,36 @@
+section.product-panel .product-card {
+  width: 30%;
+  padding: 10px;
+  margin-top: 1vw;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+  &.in-basket {
+    border: 2px solid green;
+  }
+
+  img.product-cover {
+    max-height: 150px;
+  }
+
+  h4[id^="product"] {
+    margin-top: 12px;
+  }
+
+  p.product-price {
+    font-weight: 700;
+    font-size: 18px;
+    text-align: right;
+  }
+
+  button {
+    margin-left: 6px;
+    padding: 4px 0 3px 6px;
+    min-width: 100px;
+  }
+
+  button,
+  input {
+    float: right;
+  }
+}

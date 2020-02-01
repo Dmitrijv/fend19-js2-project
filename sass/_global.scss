@@ -50,6 +50,17 @@ main {
   }
 }
 
+img.img-fluid {
+  vertical-align: middle;
+  border-style: none;
+  width: 100%;
+
+  object-fit: cover;
+  object-position: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 button {
   outline: none;
 }
@@ -59,7 +70,7 @@ button::-moz-focus-inner {
 }
 
 input[type="number"] {
-  max-width: 60px;
+  max-width: 50px;
   border-radius: 3px;
   background-color: #fff;
   color: #555;
