@@ -13,6 +13,7 @@ function loadStore(productsJson) {
   const productPanel = document.querySelector(".product-panel .panel-body");
   let htmlPayload = ``;
   productsJson.forEach(item => {
+    console.log(item);
     htmlPayload += `
     <div class="product-card">
         <img class="img-fluid product-cover" src="img/product/product-${item.id}.jpg" alt="product${item.id}" />
