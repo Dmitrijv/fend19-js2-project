@@ -1,27 +1,27 @@
 [
   {
     "id": 1,
-    "title": "Brun äggggggggg",
-    "type": "dairy",
-    "description": "Raw organic brown eggs in a basket",
+    "title": "Brun ägg",
+    "type": "Mejeri",
+    "description" : "Ekologiska ägg kommer från höns som har tillgång till utevistelse och stall med strö sittpinnar och reden ",
     "picture": "1.jpg",
     "price": 28.1,
     "rating": 4
   },
   {
     "id": 2,
-    "title": "Sweet stawberry",
-    "type": "fruit",
-    "description": "Sweet fresh stawberry on the wooden table",
+    "title": "Söta jordgubbar",
+    "type": "Frukt",
+    "description": "Generöst söta och med mycket bärsmak. Smak av solmognad, lime, svarta körsbär och smultron. Medelstora hjärtformade bär med djupt mörkröd färg",
     "picture": "2.jpg",
     "price": 29.45,
     "rating": 4
   },
   {
     "id": 3,
-    "title": "Asparagus",
-    "type": "vegetable",
-    "description": "Asparagus with ham on the wooden table",
+    "title": "Sparris",
+    "type": "Grönsaker",
+    "description": "Krispig, grön, välsmakande och alldeles, alldeles ljuvlig! Sparris är en klar vår- och sommarfavorit",
     "picture": "3.jpg",
     "price": 18.95,
     "rating": 3
@@ -29,26 +29,26 @@
   {
     "id": 4,
     "title": "Smoothie",
-    "type": "dairy",
-    "description": "Glass of green smoothie with quail egg's yolk, served with cocktail tube, green apple and baby spinach leaves over tin surface.",
+    "type": "Mejeri",
+    "description": "Den här smoothien svänger du ihop på under en kvart! Du gör den av ägg, gröna äpplen , babyspenat och vakteläggula. Ger dig massor av vitaminer, mineraler och energi.",
     "picture": "4.jpg",
     "price": 17.68,
     "rating": 4
   },
   {
     "id": 5,
-    "title": "Raw legums",
-    "type": "vegetable",
-    "description": "Raw legums on the wooden table",
+    "title": "Rå baljväxter",
+    "type": "Grönsaker",
+    "description": "Linser, bönor, ärtor med mera – baljväxter har länge ansetts vara fattigmanskost. Men det faktum att de är en utmärkt källa till högkvalitativt protein, fibrer och mineraler innebär att de numera betraktas som en viktig del av en hälsosam kost.",
     "picture": "5.jpg",
     "price": 17.11,
     "rating": 2
   },
   {
     "id": 6,
-    "title": "Cake",
-    "type": "dairy",
-    "description": "Baking cake in rural kitchen - dough  recipe ingredients (eggs, flour, sugar) on vintage wooden table from above.",
+    "title": "Tårta",
+    "type": "Mejeri",
+    "description": "Tårta är perfekt när du har något att fira! Oavsett om du vill ha en jordgubbstårta, en chokladtårta eller en bröllopstårta så har vi vad ni behöver.",
     "picture": "6.jpg",
     "price": 11.14,
     "rating": 4
@@ -56,35 +56,35 @@
   {
     "id": 7,
     "title": "Pesto",
-    "type": "vegetable",
-    "description": "Italian traditional pesto with basil, chesse and oil",
+    "type": "Grönsaker",
+    "description": "Få saker smakar så gott som hemgjord pesto!Testa den här krämiga peston! Supergod till pasta,pizza eller sallad. Vår pesto är gjord av basilika ,ost och olja",
     "picture": "7.jpg",
     "price": 18.19,
     "rating": 2
   },
   {
     "id": 8,
-    "title": "Hazelnut",
-    "type": "vegetable",
-    "description": "Hazelnut in black ceramic bowl on old wooden background. forest wealth. rustic style. selective focus",
+    "title": "Hasselnötter",
+    "type": "Grönsaker",
+    "description": "en av våra mest funktionella nötsorter och kan användas på många olika sätt, kanske främst som snacks och till olika desserter. De är inte bara väldigt goda utan bevisligen också bra för vår hälsa",
     "picture": "8.jpg",
     "price": 27.35,
     "rating": 0
   },
   {
     "id": 9,
-    "title": "Lemon",
-    "type": "fruit",
-    "description": "Rosemary, lemon and salt on the table",
+    "title": "Citron",
+    "type": "Frukt",
+    "description": "Denna populära frukt, som vi använder oss av bl.a. som krydda i matlagning och ingår i desserter, bakverk, marmelader, drycker samt tillsammans med kött och fisk. Både skal och saft används.",
     "picture": "9.jpg",
     "price": 15.79,
     "rating": 5
   },
   {
     "id": 10,
-    "title": "Bread",
-    "type": "bakery",
-    "description": "Homemade bread",
+    "title": "Bröd",
+    "type": "bageri",
+    "description": "Älskar du bröd? Bröd kan vara både mättande, näringsrikt och klimatsmart. Se bara till att välja rätt bröd så blir du både mätt och får njuta av ett gott bröd.",
     "picture": "10.jpg",
     "price": 17.48,
     "rating": 3
