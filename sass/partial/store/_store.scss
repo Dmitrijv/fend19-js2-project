@@ -7,7 +7,7 @@ div.shop-container {
   grid-template-columns: 7fr 3fr;
   grid-template-areas:
     "productContainer shoppingCart"
-    "productContainer . ";
+    "productContainer shoppingCart ";
 
   section.product-panel {
     grid-area: productContainer;

@@ -39,4 +39,9 @@ div.shop-container section.shopping-cart {
   p.subtotal-label {
     font-weight: bold;
   }
+
+  .shopping-cart-content-wrapper {
+    position: sticky;
+    top: 0;
+  }
 }
