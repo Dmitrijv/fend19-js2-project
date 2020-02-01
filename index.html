@@ -30,18 +30,44 @@
         </ul>
       </nav>
     </header>
-    <main>
-      <section class="shoppingCart">
-        <h2>Shopping Cart</h2>
-        <div class="cartItemContainer"></div>
-        <button type="button" class="btn btn-secondary">Confirm purchase</button>
-      </section>
 
-      <section class="shopItems"></section>
+    <main>
+      <div class="shop-container">
+        <section class="white-panel product-panel">
+          <div class="panel-heading">Products</div>
+          <div class="panel-body"></div>
+        </section>
+
+        <section class="white-panel shopping-cart">
+          <div class="panel-heading">Shopping Cart <span id="cart-item-count">1</span></div>
+
+          <div class="panel-body">
+            <div class="cart-empty-message">No items in cart</div>
+            <div class="cart-item-list">
+              <div class="cart-item">
+                <h4>Brown egg</h4>
+                <div class="cart-item-summary">
+                  <span id="item-1-price">50 kr</span> x
+                  <input type="number" min="1" max="1000" class="cart-item-qty" value="1" /> =
+                  <span id="item-1-stack-price">50 kr</span>
+                </div>
+                <button class="remove-cart-item">x</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-footer">
+            <p class="subtotal-label">Subtotal: <span id="subtotal-value">0.00 kr</span></p>
+            <button type="button" class="btn btn-secondary">Checkout</button>
+            <button type="button" class="btn btn-secondary">Clear</button>
+          </div>
+        </section>
+      </div>
     </main>
+
     <footer>
       <a href="/json/inventory.json" target="_blank">inventory.json</a>
-      <p>FEND19 - JavaSript 2 - Projekt</p>
+      <p>FEND19 - JavaSript 2 - Project</p>
       <p>Grupp 7, Nackademin</p>
       <p>2020-01-31</p>
     </footer>
