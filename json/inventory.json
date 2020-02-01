@@ -28,7 +28,7 @@
   },
   {
     "id": 4,
-    "title": "Green smoothie",
+    "title": "Smoothie",
     "type": "dairy",
     "description": "Glass of green smoothie with quail egg's yolk, served with cocktail tube, green apple and baby spinach leaves over tin surface.",
     "picture": "4.jpg",
@@ -46,7 +46,7 @@
   },
   {
     "id": 6,
-    "title": "Baking cake",
+    "title": "Cake",
     "type": "dairy",
     "description": "Baking cake in rural kitchen - dough  recipe ingredients (eggs, flour, sugar) on vintage wooden table from above.",
     "picture": "6.jpg",
@@ -55,7 +55,7 @@
   },
   {
     "id": 7,
-    "title": "Pesto with basil",
+    "title": "Pesto",
     "type": "vegetable",
     "description": "Italian traditional pesto with basil, chesse and oil",
     "picture": "7.jpg",
@@ -64,7 +64,7 @@
   },
   {
     "id": 8,
-    "title": "Hazelnut in black ceramic bowl",
+    "title": "Hazelnut",
     "type": "vegetable",
     "description": "Hazelnut in black ceramic bowl on old wooden background. forest wealth. rustic style. selective focus",
     "picture": "8.jpg",
@@ -73,7 +73,7 @@
   },
   {
     "id": 9,
-    "title": "Lemon and salt",
+    "title": "Lemon",
     "type": "fruit",
     "description": "Rosemary, lemon and salt on the table",
     "picture": "9.jpg",
@@ -82,7 +82,7 @@
   },
   {
     "id": 10,
-    "title": "Homemade bread",
+    "title": "Bread",
     "type": "bakery",
     "description": "Homemade bread",
     "picture": "10.jpg",
