@@ -1,29 +1,29 @@
 [
   {
     "id": 1,
-    "title": "Brun ägg",
+    "title": "Brun ägg /24-pack",
     "type": "Mejeri",
     "description" : "Ekologiska ägg kommer från höns som har tillgång till utevistelse och stall med strö sittpinnar och reden ",
     "picture": "1.jpg",
-    "price": 28.1,
+    "price": "32kr",
     "rating": 4
   },
   {
     "id": 2,
-    "title": "Söta jordgubbar",
+    "title": "Söta jordgubbar 500g",
     "type": "Frukt",
     "description": "Generöst söta och med mycket bärsmak. Smak av solmognad, lime, svarta körsbär och smultron. Medelstora hjärtformade bär med djupt mörkröd färg",
     "picture": "2.jpg",
-    "price": 29.45,
+    "price": "40kr",
     "rating": 4
   },
   {
     "id": 3,
-    "title": "Sparris",
+    "title": "Sparris 12-pack",
     "type": "Grönsaker",
     "description": "Krispig, grön, välsmakande och alldeles, alldeles ljuvlig! Sparris är en klar vår- och sommarfavorit",
     "picture": "3.jpg",
-    "price": 18.95,
+    "price": "19.95kr",
     "rating": 3
   },
   {
@@ -32,52 +32,52 @@
     "type": "Mejeri",
     "description": "Den här smoothien svänger du ihop på under en kvart! Du gör den av ägg, gröna äpplen , babyspenat och vakteläggula. Ger dig massor av vitaminer, mineraler och energi.",
     "picture": "4.jpg",
-    "price": 17.68,
+    "price": "25kr",
     "rating": 4
   },
   {
     "id": 5,
-    "title": "Rå baljväxter",
+    "title": "Rå baljväxter 500g",
     "type": "Grönsaker",
     "description": "Linser, bönor, ärtor med mera – baljväxter har länge ansetts vara fattigmanskost. Men det faktum att de är en utmärkt källa till högkvalitativt protein, fibrer och mineraler innebär att de numera betraktas som en viktig del av en hälsosam kost.",
     "picture": "5.jpg",
-    "price": 17.11,
+    "price": "17.50kr",
     "rating": 2
   },
   {
     "id": 6,
-    "title": "Tårta",
+    "title": "Tårta 1kg",
     "type": "Mejeri",
     "description": "Tårta är perfekt när du har något att fira! Oavsett om du vill ha en jordgubbstårta, en chokladtårta eller en bröllopstårta så har vi vad ni behöver.",
     "picture": "6.jpg",
-    "price": 11.14,
+    "price": "20.99kr",
     "rating": 4
   },
   {
     "id": 7,
-    "title": "Pesto",
+    "title": "Pesto 400g",
     "type": "Grönsaker",
     "description": "Få saker smakar så gott som hemgjord pesto!Testa den här krämiga peston! Supergod till pasta,pizza eller sallad. Vår pesto är gjord av basilika ,ost och olja",
     "picture": "7.jpg",
-    "price": 18.19,
+    "price": "21kr",
     "rating": 2
   },
   {
     "id": 8,
-    "title": "Hasselnötter",
+    "title": "Hasselnötter 100g",
     "type": "Grönsaker",
     "description": "en av våra mest funktionella nötsorter och kan användas på många olika sätt, kanske främst som snacks och till olika desserter. De är inte bara väldigt goda utan bevisligen också bra för vår hälsa",
     "picture": "8.jpg",
-    "price": 27.35,
+    "price": "14kr",
     "rating": 0
   },
   {
     "id": 9,
-    "title": "Citron",
+    "title": "Citron 500g",
     "type": "Frukt",
     "description": "Denna populära frukt, som vi använder oss av bl.a. som krydda i matlagning och ingår i desserter, bakverk, marmelader, drycker samt tillsammans med kött och fisk. Både skal och saft används.",
     "picture": "9.jpg",
-    "price": 15.79,
+    "price": "15kr",
     "rating": 5
   },
   {
@@ -86,7 +86,7 @@
     "type": "bageri",
     "description": "Älskar du bröd? Bröd kan vara både mättande, näringsrikt och klimatsmart. Se bara till att välja rätt bröd så blir du både mätt och får njuta av ett gott bröd.",
     "picture": "10.jpg",
-    "price": 17.48,
+    "price": "32kr",
     "rating": 3
   }
 ]
