@@ -248,13 +248,19 @@ div.shop-container section.shopping-cart p.subtotal-label {
   font-weight: bold;
 }
 
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 div.shop-container {
   display: -ms-grid;
   display: grid;
   grid-gap: 1vw;
   -ms-grid-columns: 7fr 3fr;
       grid-template-columns: 7fr 3fr;
-      grid-template-areas: "productContainer shoppingCart" "productContainer . ";
+      grid-template-areas: "productContainer shoppingCart" "productContainer shoppingCart ";
 }
 
 div.shop-container section.product-panel {
@@ -279,6 +285,7 @@ div.shop-container section.product-panel div.panel-body {
 
 div.shop-container section.shopping-cart {
   -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
   -ms-grid-column: 2;
   grid-area: shoppingCart;
 }
