@@ -13,14 +13,13 @@ function loadStore(productsJson) {
   const productPanel = document.querySelector(".product-panel .panel-body");
   let htmlPayload = ``;
   productsJson.forEach(item => {
-    console.log(item);
     htmlPayload += `
     <div class="product-card">
         <img class="img-fluid product-cover" src="img/product/product-${item.id}.jpg" alt="product${item.id}" />
         <h4 id="product-${item.id}-name">${item.title}</h4>
         <p id="product-2-description">${item.description}</p>
         <hr />
-        <p class="product-price" id="prouct-2-price">${item.price}</p>
+        <p class="product-price" id="prouct-2-price">${item.price.value} ${item.price.currency}</p>
         <div>
         <button type="button" value="" class="btn btn-success">Add to cart</button>
         <input type="number" min="1" max="1000" class="cart-item-qty" value="1" />
