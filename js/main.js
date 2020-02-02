@@ -10,6 +10,9 @@ $(document).ready(function() {
   } else {
     loadJsonByXhr(INVENTORY_DIR, loadStore);
   }
+
+  // initiate clear cart button
+  document.querySelector("#clear-cart-button").addEventListener("click", clearShoppingCart);
 });
 
 function loadStore(productsJson) {
@@ -57,13 +60,15 @@ function getLocallyStoredShoppingCart() {
 }
 
 function addItemToShoppingCart(itemID, itemCount) {
+  console.log(itemCount);
   const shoppingCart = getLocallyStoredShoppingCart();
-  shoppingCart[itemID] = Number(shoppingCart[itemID] + itemCount) || 1;
+  shoppingCart[itemID] = Number(shoppingCart[itemID] + itemCount) || itemCount;
+  console.log(shoppingCart[itemID]);
   localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
   updateShoppingCartWindow(shoppingCart);
 }
 
-function clearShoppingBasket() {
+function clearShoppingCart() {
   const emptyCart = {};
   localStorage.setItem("shoppingCart", JSON.stringify(emptyCart));
   updateShoppingCartWindow(emptyCart);
