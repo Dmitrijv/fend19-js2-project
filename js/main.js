@@ -1,6 +1,10 @@
 $(document).ready(function() {
-  const INVENTORY_DIR = "json/inventory.json";
+  // load user shopping cart from local storage or create it if none exists
+  const shoppingCart = getLocallyStoredShoppingCart();
+  // updateShoppingCartWindow(shoppingCart); // todo
+
   // load shop items from local json file
+  const INVENTORY_DIR = "json/inventory.json";
   if (Modernizr.fetch) {
     loadJsonByFetch(INVENTORY_DIR, loadStore);
   } else {
@@ -15,7 +19,7 @@ function loadStore(productsJson) {
   let htmlPayload = ``;
   productsJson.forEach(item => {
     htmlPayload += `
-    <div class="product-card">
+    <div data-item-id="${item.id}" class="product-card">
         <img class="img-fluid product-cover" src="img/product/product-${item.id}.jpg" alt="${item.title}" />
         <h4 id="product-name">${item.title}</h4>
         <p>${item.description}</p>
@@ -31,13 +35,40 @@ function loadStore(productsJson) {
 
   // add event listeners to "Add to cart" all buttons
   const addToCartButtons = document.querySelectorAll(".product-panel .panel-body button[data-item-id]");
-  addToCartButtons.forEach(button => {
-    button.addEventListener("click", clickAddToCartButton);
-  });
+  addToCartButtons.forEach(button => button.addEventListener("click", clickAddToCartButton));
 }
 
-function clickAddToCartButton(e) {
+function clickAddToCartButton(event) {
   const thisButton = event.currentTarget;
-  const productID = thisButton.dataset.itemId;
-  console.log("Added product " + productID + " to cart");
+  const itemID = thisButton.dataset.itemId;
+  const itemCount = Number(document.querySelector(`input[data-item-id="${itemID}"]`).value);
+
+  addItemToShoppingCart(itemID, itemCount);
+
+  const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
+  productCard.classList.add("in-basket");
+
+  console.log("Added product " + itemID + " to cart");
+}
+
+function getLocallyStoredShoppingCart() {
+  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+  return !shoppingCart || Object.keys(shoppingCart).length === 0 ? {} : shoppingCart;
+}
+
+function addItemToShoppingCart(itemID, itemCount) {
+  const shoppingCart = getLocallyStoredShoppingCart();
+  shoppingCart[itemID] = Number(shoppingCart[itemID] + itemCount) || 1;
+  localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+  updateShoppingCartWindow(shoppingCart);
+}
+
+function clearShoppingBasket() {
+  const emptyCart = {};
+  localStorage.setItem("shoppingCart", JSON.stringify(emptyCart));
+  updateShoppingCartWindow(emptyCart);
+}
+
+function updateShoppingCartWindow(shoppingCart) {
+  // TODO
 }
