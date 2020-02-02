@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // load user shopping cart from local storage or create it if none exists
   const shoppingCart = getLocallyStoredShoppingCart();
   // updateShoppingCartWindow(shoppingCart); // todo
@@ -27,7 +27,7 @@ function loadStore(productsJson) {
         <h4 id="product-name">${item.title}</h4>
         <p>${item.description}</p>
         <hr />
-        <p class="product-price">${item.price.value} ${item.price.currency}</p>
+        <p class="product-price"><span class='product-price-value'>${item.price.value}</span> ${item.price.currency}</p>
         <div>
         <button data-item-id="${item.id}" type="button" class="btn btn-success">Add to cart</button>
         <input data-item-id="${item.id}" type="number" min="1" max="1000" class="cart-item-qty" value="1" />
@@ -38,7 +38,9 @@ function loadStore(productsJson) {
 
   // add event listeners to "Add to cart" all buttons
   const addToCartButtons = document.querySelectorAll(".product-panel .panel-body button[data-item-id]");
-  addToCartButtons.forEach(button => button.addEventListener("click", clickAddToCartButton));
+  for (var i = 0; i < addToCartButtons.length; i++) {
+    addToCartButtons[i].addEventListener('click', clickAddToCartButton);
+  }
 }
 
 function clickAddToCartButton(event) {
@@ -49,6 +51,7 @@ function clickAddToCartButton(event) {
   addItemToShoppingCart(itemID, itemCount);
 
   const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
+
   productCard.classList.add("in-basket");
   // console.log("Added product " + itemID + " to cart");
 }
@@ -72,4 +75,37 @@ function clearShoppingCart() {
 
 function updateShoppingCartWindow(shoppingCart) {
   // TODO
+  let shoppingCartPanel = document.querySelector(".cart-item-list");
+  let productInfoArray = JSON.parse(localStorage.getItem(localStorage.key(0)))
+  let productIDArray = Object.keys(productInfoArray)
+
+  //create shopping cart itemlist according to item-id and item-number
+  let htmlPayload = ``;
+  let panelFooterPriceContent = document.querySelector('#subtotal-value');
+  panelFooterPriceContent.textContent = ''
+  let panelSubTotal = 0
+  productIDArray.forEach(id => {
+    console.log(id)
+    let itemName = document.querySelector(`div[data-item-id="${id}"]`).querySelector('#product-name').textContent
+    let itemAmount = productInfoArray[id]
+    let itemPrice = document.querySelector(`div[data-item-id="${id}"]`).querySelector('.product-price-value').textContent
+    let itemSubTotal = itemPrice * itemAmount
+    console.log(itemName, itemAmount, itemPrice, itemSubTotal)
+
+    panelSubTotal += itemSubTotal
+    htmlPayload += `
+    <div class="cart-item">
+      <h4>${itemName}</h4>
+      <div class="cart-item-summary">
+        <span id="item-1-price">${itemPrice} kr</span> x
+        <input type="number" min="1" max="1000" class="cart-item-qty" value="${itemAmount}" /> =
+        <span id="item-1-stack-price">${itemSubTotal} kr</span>
+      </div>
+      <button class="remove-cart-item">x</button>
+    </div>`
+
+  })
+  panelFooterPriceContent.textContent = panelSubTotal
+
+  shoppingCartPanel.innerHTML = htmlPayload.length > 0 ? htmlPayload : "Failed to load store items.";
 }
