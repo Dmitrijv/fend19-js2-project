@@ -45,25 +45,31 @@ function loadStore(productsJson) {
 }
 
 function clickAddToCartButton(event) {
-  const thisButton = event.currentTarget;
-  const itemID = thisButton.dataset.itemId;
-  const itemCount = Number(document.querySelector(`input[data-item-id="${itemID}"]`).value);
+  const button = event.currentTarget;
 
+  const itemID = button.dataset.itemId;
+  const itemCount = Number(document.querySelector(`input[data-item-id="${itemID}"]`).value);
   addItemToShoppingCart(itemID, itemCount);
 
   const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
-
   productCard.classList.add("in-basket");
 }
 
-function getLocallyStoredShoppingCart() {
+function getShoppingCart() {
   const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
   return !shoppingCart || Object.keys(shoppingCart).length === 0 ? {} : shoppingCart;
 }
 
 function addItemToShoppingCart(itemID, itemCount) {
-  const shoppingCart = getLocallyStoredShoppingCart();
+  const shoppingCart = getShoppingCart();
   shoppingCart[itemID] = Number(shoppingCart[itemID] + itemCount) || itemCount;
+  localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+  updateShoppingCartWindow();
+}
+
+function removeItemFromShoppingCart(itemID) {
+  const shoppingCart = getShoppingCart();
+  delete shoppingCart[itemID];
   localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
   updateShoppingCartWindow();
 }
@@ -108,7 +114,7 @@ function updateShoppingCartWindow() {
         <input type="number" min="1" max="1000" class="cart-item-qty" value="${itemCount}" /> =
         <span id="item-1-stack-price">${itemTotal} kr</span>
       </div>
-      <button class="remove-cart-item">x</button>
+      <button data-item-id="${item.id}" class="remove-cart-item">x</button>
     </div>`;
   });
 
@@ -122,4 +128,18 @@ function updateShoppingCartWindow() {
     document.querySelector(".cart-empty-message").style.display = "none";
     shoppingCartPanel.innerHTML = htmlPayload;
   }
+
+  // add event listeners to "Add to cart" all buttons
+  const addToCartButtons = document.querySelectorAll(".cart-item button.remove-cart-item");
+  for (var i = 0; i < addToCartButtons.length; i++) {
+    addToCartButtons[i].addEventListener("click", onDeleteCartItem);
+  }
+}
+
+function onDeleteCartItem(event) {
+  const button = event.currentTarget;
+  const itemID = button.dataset.itemId;
+  removeItemFromShoppingCart(itemID);
+  const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
+  productCard.classList.remove("in-basket");
 }

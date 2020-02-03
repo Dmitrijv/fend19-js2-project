@@ -189,6 +189,10 @@ section.product-panel .product-card h4.product-name {
   margin-top: 12px;
 }
 
+section.product-panel .product-card p.product-description {
+  color: black;
+}
+
 section.product-panel .product-card p.product-price {
   font-weight: 700;
   font-size: 18px;
