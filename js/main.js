@@ -43,8 +43,10 @@ function assignButtonEvents() {
   for (var i = 0; i < addToCartButtons.length; i++) {
     addToCartButtons[i].addEventListener("click", clickAddToCartButton);
   }
-  // initiate clear cart button
+  // set up clear cart button
   document.querySelector("#clear-cart-button").addEventListener("click", clearShoppingCart);
+  // set up clear to order button
+  document.querySelector("#to-order-button").addEventListener("click", onToOrderClick);
 }
 
 function clickAddToCartButton(event) {
@@ -91,7 +93,6 @@ function clearShoppingCart() {
 
 function updateShoppingCartWindow() {
   const shoppingCartPanel = document.querySelector(".cart-item-list");
-  const itemsCountLabel = document.querySelector("#cart-item-count");
   const subtotalLabel = document.querySelector("#subtotal-value");
   subtotalLabel.textContent = "";
 
@@ -104,7 +105,7 @@ function updateShoppingCartWindow() {
   Object.keys(shoppingCart).forEach(itemID => {
     const item = inventory.find(item => item.id === Number(itemID));
 
-    const itemCount = shoppingCart[itemID];
+    const itemCount = Number(shoppingCart[itemID]);
     const itemTotal = item.price.value * itemCount;
 
     subTotal += itemTotal;
@@ -113,15 +114,17 @@ function updateShoppingCartWindow() {
     <div class="cart-item">
       <h4>${item.title}</h4>
       <div class="cart-item-summary">
-        <span id="item-1-price">${item.price.value} kr</span> x
-        <input type="number" min="1" max="1000" class="cart-item-qty" value="${itemCount}" /> =
-        <span id="item-1-stack-price">${itemTotal} kr</span>
+        <span data-item-id="${item.id}" class="item-price">${item.price.value}</span> ${item.price.currency} x
+        <input data-item-id="${item.id}" type="number" min="1" max="1000" class="cart-item-qty" value="${itemCount}" /> =
+        <span data-item-id="${item.id}" class="item-stack-price">${itemTotal}</span> kr
       </div>
       <button data-item-id="${item.id}" class="remove-cart-item">x</button>
     </div>`;
   });
 
   subtotalLabel.textContent = subTotal;
+
+  const itemsCountLabel = document.querySelector("#cart-item-count");
   itemsCountLabel.textContent = itemsCountTotal;
 
   if (htmlPayload.length === 0) {
@@ -132,11 +135,45 @@ function updateShoppingCartWindow() {
     shoppingCartPanel.innerHTML = htmlPayload;
   }
 
-  // add event listeners to all "Add to cart" buttons
+  // add event listeners to all item quantity input fields
+  const stackInputs = document.querySelectorAll(".cart-item input.cart-item-qty");
+  for (var i = 0; i < stackInputs.length; i++) {
+    stackInputs[i].addEventListener("change", onCartItemStackUpdated);
+  }
+
+  // add event listeners to all X buttons
   const addToCartButtons = document.querySelectorAll(".cart-item button.remove-cart-item");
   for (var i = 0; i < addToCartButtons.length; i++) {
     addToCartButtons[i].addEventListener("click", onDeleteCartItem);
   }
+}
+
+function onCartItemStackUpdated(event) {
+  const input = event.currentTarget;
+  const itemID = input.dataset.itemId;
+  const newStackSize = Number(input.value);
+
+  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+  const inventory = JSON.parse(sessionStorage.getItem("inventory"));
+
+  // save new stack size
+  shoppingCart[itemID] = newStackSize;
+  localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+
+  // update number of items in cart
+  const newItemCount = Object.values(shoppingCart).reduce((sum, value) => sum + Number(value), 0);
+  document.querySelector("#cart-item-count").textContent = newItemCount;
+
+  // update new price total for this item
+  let itemPrice = inventory.find(item => item.id === Number(itemID)).price.value;
+  document.querySelector(`.item-stack-price[data-item-id="${itemID}"]`).textContent = itemPrice * newStackSize;
+
+  // update sub total for the entire cart
+  const newSubTotalValue = Object.keys(shoppingCart).reduce((total, id) => {
+    const item = inventory.find(item => item.id === Number(id));
+    return total + item.price.value * shoppingCart[id];
+  }, 0);
+  document.querySelector(`#subtotal-value`).textContent = newSubTotalValue;
 }
 
 function onDeleteCartItem(event) {
@@ -145,4 +182,9 @@ function onDeleteCartItem(event) {
   removeItemFromShoppingCart(itemID);
   const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
   productCard.classList.remove("in-basket");
+}
+
+function onToOrderClick() {
+  const shoppingCart = getShoppingCart();
+  if (Object.keys(shoppingCart).length > 0) location.href = "/order.html";
 }
