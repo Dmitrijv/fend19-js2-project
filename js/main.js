@@ -59,7 +59,6 @@ function clickAddToCartButton(event) {
   const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
 
   productCard.classList.add("in-basket");
-  // console.log("Added product " + itemID + " to cart");
 }
 
 function getLocallyStoredShoppingCart() {
@@ -71,12 +70,20 @@ function addItemToShoppingCart(itemID, itemCount) {
   const shoppingCart = getLocallyStoredShoppingCart();
   shoppingCart[itemID] = Number(shoppingCart[itemID] + itemCount) || itemCount;
   localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
-  updateShoppingCartWindow(shoppingCart);
+  updateShoppingCartWindow();
 }
 
 function clearShoppingCart() {
+
+  // remove green outline from added items
+  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+  Object.keys(shoppingCart).forEach(itemID => {
+    const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
+    productCard.classList.remove("in-basket");
+  });
+
   localStorage.setItem("shoppingCart", JSON.stringify({}));
-  updateShoppingCartWindow({});
+  updateShoppingCartWindow();
 }
 
 function updateShoppingCartWindow() {
