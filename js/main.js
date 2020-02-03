@@ -89,13 +89,16 @@ function clearShoppingCart() {
 function updateShoppingCartWindow() {
 
   const shoppingCartPanel = document.querySelector(".cart-item-list");
+  const itemsCountLabel = document.querySelector("#cart-item-count");
   const subtotalLabel = document.querySelector('#subtotal-value');
   subtotalLabel.textContent = '';
 
   const inventory = JSON.parse(sessionStorage.getItem("inventory"));
   const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
 
+
   let subTotal = 0;
+  let itemsCountTotal = 0;
   let htmlPayload = ``;
   Object.keys(shoppingCart).forEach(itemID => {
 
@@ -103,8 +106,9 @@ function updateShoppingCartWindow() {
 
     const itemCount = shoppingCart[itemID];
     const itemTotal = item.price.value * itemCount;
-    subTotal += itemTotal;
 
+    subTotal += itemTotal;
+    itemsCountTotal += itemCount;
     htmlPayload += `
     <div class="cart-item">
       <h4>${item.title}</h4>
@@ -119,6 +123,7 @@ function updateShoppingCartWindow() {
   });
 
   subtotalLabel.textContent = subTotal;
+  itemsCountLabel.textContent = itemsCountTotal;
 
   if (htmlPayload.length === 0) {
     document.querySelector(".cart-empty-message").style.display = "block";
