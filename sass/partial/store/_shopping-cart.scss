@@ -6,19 +6,23 @@ div.shop-container section.shopping-cart {
   }
 
   .cart-item:hover {
-    background-color: antiquewhite;
+    background-color: whitesmoke;
+  }
+
+  .cart-item + .cart-item {
+    border-top: 1px dashed lightgray;
   }
 
   .cart-item {
     position: relative;
-    padding: 0 15px 0 15px;
+    padding: 10px 15px;
 
     button.remove-cart-item {
       position: absolute;
       top: -15px;
       right: 0px;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 26px;
       margin: 5px;
       background: 0 0;
       border: none;
@@ -26,7 +30,7 @@ div.shop-container section.shopping-cart {
     }
 
     button.remove-cart-item:hover {
-      border: 0;
+      color: red;
     }
   }
 
