@@ -1,5 +1,3 @@
-let itemInventory;
-
 $(document).ready(function() {
   // load shop items from local json file
   const INVENTORY_DIR = "json/inventory.json";
@@ -8,22 +6,20 @@ $(document).ready(function() {
   } else {
     loadJsonByXhr(INVENTORY_DIR, loadStore);
   }
-
-  // initiate clear cart button
-  document.querySelector("#clear-cart-button").addEventListener("click", clearShoppingCart);
-  updateShoppingCartWindow();
 });
 
 function loadStore(productsJson) {
   sessionStorage.setItem("inventory", JSON.stringify(productsJson));
 
   const productPanel = document.querySelector(".product-panel .panel-body");
+  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
 
   // generate item HTML and append it to store panel
   let htmlPayload = ``;
   productsJson.forEach(item => {
+    const inBasketFlag = shoppingCart[item.id] ? "in-basket" : "";
     htmlPayload += `
-    <div data-item-id="${item.id}" class="product-card">
+    <div data-item-id="${item.id}" class="product-card ${inBasketFlag}">
         <img class="img-fluid product-cover" src="img/product/product-${item.id}.jpg" alt="${item.title}" />
         <h4 id="product-name">${item.title}</h4>
         <p class="product-description">${item.description}</p>
@@ -37,11 +33,18 @@ function loadStore(productsJson) {
   });
   productPanel.innerHTML = htmlPayload.length > 0 ? htmlPayload : "Failed to load store items.";
 
-  // add event listeners to "Add to cart" all buttons
+  assignButtonEvents();
+  updateShoppingCartWindow();
+}
+
+function assignButtonEvents() {
+  // add event listeners to all "Add to cart" buttons
   const addToCartButtons = document.querySelectorAll(".product-panel .panel-body button[data-item-id]");
   for (var i = 0; i < addToCartButtons.length; i++) {
     addToCartButtons[i].addEventListener("click", clickAddToCartButton);
   }
+  // initiate clear cart button
+  document.querySelector("#clear-cart-button").addEventListener("click", clearShoppingCart);
 }
 
 function clickAddToCartButton(event) {
@@ -129,7 +132,7 @@ function updateShoppingCartWindow() {
     shoppingCartPanel.innerHTML = htmlPayload;
   }
 
-  // add event listeners to "Add to cart" all buttons
+  // add event listeners to all "Add to cart" buttons
   const addToCartButtons = document.querySelectorAll(".cart-item button.remove-cart-item");
   for (var i = 0; i < addToCartButtons.length; i++) {
     addToCartButtons[i].addEventListener("click", onDeleteCartItem);
