@@ -67,8 +67,7 @@ td {
 }
 
 table {
-  margin-bottom: 5%;
-  padding: 2rem 5vw;
+  margin: 2rem 5vw;
 }
 
 .address {
@@ -108,5 +107,17 @@ footer p {
 
 footer p + p {
   margin-top: 0px;
+}
+
+.new-order-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.new-order-content .btn-primary {
+  margin-left: auto;
+  margin-bottom: 2rem;
+  margin-right: 5vw;
 }
 /*# sourceMappingURL=order.css.map */
