@@ -64,11 +64,10 @@ img.img-fluid {
   margin-right: auto;
 }
 
-button {
-  outline: none;
-}
-
+button,
+button:focus,
 button::-moz-focus-inner {
+  outline: none;
   border: 0;
 }
 
@@ -214,7 +213,7 @@ div.shop-container section.shopping-cart .panel-heading #cart-item-count {
 }
 
 div.shop-container section.shopping-cart .cart-item:hover {
-  background-color: antiquewhite;
+  background-color: whitesmoke;
 }
 
 div.shop-container section.shopping-cart .cart-item + .cart-item {
@@ -231,7 +230,7 @@ div.shop-container section.shopping-cart .cart-item button.remove-cart-item {
   top: -15px;
   right: 0px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 26px;
   margin: 5px;
   background: 0 0;
   border: none;
@@ -239,7 +238,7 @@ div.shop-container section.shopping-cart .cart-item button.remove-cart-item {
 }
 
 div.shop-container section.shopping-cart .cart-item button.remove-cart-item:hover {
-  border: 0;
+  color: red;
 }
 
 div.shop-container section.shopping-cart .cart-empty-message {

@@ -61,11 +61,10 @@ img.img-fluid {
   margin-right: auto;
 }
 
-button {
-  outline: none;
-}
-
+button,
+button:focus,
 button::-moz-focus-inner {
+  outline: none;
   border: 0;
 }
 
