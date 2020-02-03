@@ -1,7 +1,6 @@
-$(document).ready(function() {
-  // load user shopping cart from local storage or create it if none exists
-  const shoppingCart = getLocallyStoredShoppingCart();
-  // updateShoppingCartWindow(shoppingCart); // todo
+let itemInventory;
+
+$(document).ready(function () {
 
   // load shop items from local json file
   const INVENTORY_DIR = "json/inventory.json";
@@ -13,9 +12,16 @@ $(document).ready(function() {
 
   // initiate clear cart button
   document.querySelector("#clear-cart-button").addEventListener("click", clearShoppingCart);
+  updateShoppingCartWindow();
+
 });
 
+
+
 function loadStore(productsJson) {
+
+  sessionStorage.setItem("inventory", JSON.stringify(productsJson));
+
   const productPanel = document.querySelector(".product-panel .panel-body");
 
   // generate item HTML and append it to store panel
@@ -27,7 +33,7 @@ function loadStore(productsJson) {
         <h4 id="product-name">${item.title}</h4>
         <p>${item.description}</p>
         <hr />
-        <p class="product-price">${item.price.value} ${item.price.currency}</p>
+        <p class="product-price"><span class='product-price-value'>${item.price.value}</span> ${item.price.currency}</p>
         <div>
         <button data-item-id="${item.id}" type="button" class="btn btn-success">Add to cart</button>
         <input data-item-id="${item.id}" type="number" min="1" max="1000" class="cart-item-qty" value="1" />
@@ -38,7 +44,9 @@ function loadStore(productsJson) {
 
   // add event listeners to "Add to cart" all buttons
   const addToCartButtons = document.querySelectorAll(".product-panel .panel-body button[data-item-id]");
-  addToCartButtons.forEach(button => button.addEventListener("click", clickAddToCartButton));
+  for (var i = 0; i < addToCartButtons.length; i++) {
+    addToCartButtons[i].addEventListener('click', clickAddToCartButton);
+  }
 }
 
 function clickAddToCartButton(event) {
@@ -49,8 +57,8 @@ function clickAddToCartButton(event) {
   addItemToShoppingCart(itemID, itemCount);
 
   const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
+
   productCard.classList.add("in-basket");
-  // console.log("Added product " + itemID + " to cart");
 }
 
 function getLocallyStoredShoppingCart() {
@@ -62,14 +70,66 @@ function addItemToShoppingCart(itemID, itemCount) {
   const shoppingCart = getLocallyStoredShoppingCart();
   shoppingCart[itemID] = Number(shoppingCart[itemID] + itemCount) || itemCount;
   localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
-  updateShoppingCartWindow(shoppingCart);
+  updateShoppingCartWindow();
 }
 
 function clearShoppingCart() {
+
+  // remove green outline from added items
+  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+  Object.keys(shoppingCart).forEach(itemID => {
+    const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
+    productCard.classList.remove("in-basket");
+  });
+
   localStorage.setItem("shoppingCart", JSON.stringify({}));
-  updateShoppingCartWindow({});
+  updateShoppingCartWindow();
 }
 
-function updateShoppingCartWindow(shoppingCart) {
-  // TODO
+function updateShoppingCartWindow() {
+
+  const shoppingCartPanel = document.querySelector(".cart-item-list");
+  const itemsCountLabel = document.querySelector("#cart-item-count");
+  const subtotalLabel = document.querySelector('#subtotal-value');
+  subtotalLabel.textContent = '';
+
+  const inventory = JSON.parse(sessionStorage.getItem("inventory"));
+  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+
+
+  let subTotal = 0;
+  let itemsCountTotal = 0;
+  let htmlPayload = ``;
+  Object.keys(shoppingCart).forEach(itemID => {
+
+    const item = inventory.find(item => item.id === Number(itemID));
+
+    const itemCount = shoppingCart[itemID];
+    const itemTotal = item.price.value * itemCount;
+
+    subTotal += itemTotal;
+    itemsCountTotal += itemCount;
+    htmlPayload += `
+    <div class="cart-item">
+      <h4>${item.title}</h4>
+      <div class="cart-item-summary">
+        <span id="item-1-price">${item.price.value} kr</span> x
+        <input type="number" min="1" max="1000" class="cart-item-qty" value="${itemCount}" /> =
+        <span id="item-1-stack-price">${itemTotal} kr</span>
+      </div>
+      <button class="remove-cart-item">x</button>
+    </div>`;
+
+  });
+
+  subtotalLabel.textContent = subTotal;
+  itemsCountLabel.textContent = itemsCountTotal;
+
+  if (htmlPayload.length === 0) {
+    document.querySelector(".cart-empty-message").style.display = "block";
+    shoppingCartPanel.innerHTML = "";
+  } else {
+    document.querySelector(".cart-empty-message").style.display = "none";
+    shoppingCartPanel.innerHTML = htmlPayload;
+  }
 }
