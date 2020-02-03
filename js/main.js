@@ -43,8 +43,10 @@ function assignButtonEvents() {
   for (var i = 0; i < addToCartButtons.length; i++) {
     addToCartButtons[i].addEventListener("click", clickAddToCartButton);
   }
-  // initiate clear cart button
+  // set up clear cart button
   document.querySelector("#clear-cart-button").addEventListener("click", clearShoppingCart);
+  // set up clear to order button
+  document.querySelector("#to-order-button").addEventListener("click", onToOrderClick);
 }
 
 function clickAddToCartButton(event) {
@@ -145,4 +147,9 @@ function onDeleteCartItem(event) {
   removeItemFromShoppingCart(itemID);
   const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
   productCard.classList.remove("in-basket");
+}
+
+function onToOrderClick() {
+  const shoppingCart = getShoppingCart();
+  if (Object.keys(shoppingCart).length > 0) location.href = "/order.html";
 }
