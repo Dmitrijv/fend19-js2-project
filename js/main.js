@@ -1,7 +1,6 @@
+let itemInventory;
+
 $(document).ready(function () {
-  // load user shopping cart from local storage or create it if none exists
-  const shoppingCart = getLocallyStoredShoppingCart();
-  // updateShoppingCartWindow(shoppingCart); // todo
 
   // load shop items from local json file
   const INVENTORY_DIR = "json/inventory.json";
@@ -13,9 +12,16 @@ $(document).ready(function () {
 
   // initiate clear cart button
   document.querySelector("#clear-cart-button").addEventListener("click", clearShoppingCart);
+  updateShoppingCartWindow();
+
 });
 
+
+
 function loadStore(productsJson) {
+
+  sessionStorage.setItem("inventory", JSON.stringify(productsJson));
+
   const productPanel = document.querySelector(".product-panel .panel-body");
 
   // generate item HTML and append it to store panel
@@ -73,39 +79,45 @@ function clearShoppingCart() {
   updateShoppingCartWindow({});
 }
 
-function updateShoppingCartWindow(shoppingCart) {
-  // TODO
-  let shoppingCartPanel = document.querySelector(".cart-item-list");
-  let productInfoArray = JSON.parse(localStorage.getItem(localStorage.key(0)))
-  let productIDArray = Object.keys(productInfoArray)
+function updateShoppingCartWindow() {
 
-  //create shopping cart itemlist according to item-id and item-number
+  const shoppingCartPanel = document.querySelector(".cart-item-list");
+  const subtotalLabel = document.querySelector('#subtotal-value');
+  subtotalLabel.textContent = '';
+
+  const inventory = JSON.parse(sessionStorage.getItem("inventory"));
+  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+
+  let subTotal = 0;
   let htmlPayload = ``;
-  let panelFooterPriceContent = document.querySelector('#subtotal-value');
-  panelFooterPriceContent.textContent = ''
-  let panelSubTotal = 0
-  productIDArray.forEach(id => {
-    console.log(id)
-    let itemName = document.querySelector(`div[data-item-id="${id}"]`).querySelector('#product-name').textContent
-    let itemAmount = productInfoArray[id]
-    let itemPrice = document.querySelector(`div[data-item-id="${id}"]`).querySelector('.product-price-value').textContent
-    let itemSubTotal = itemPrice * itemAmount
-    console.log(itemName, itemAmount, itemPrice, itemSubTotal)
+  Object.keys(shoppingCart).forEach(itemID => {
 
-    panelSubTotal += itemSubTotal
+    const item = inventory.find(item => item.id === Number(itemID));
+
+    const itemCount = shoppingCart[itemID];
+    const itemTotal = item.price.value * itemCount;
+    subTotal += itemTotal;
+
     htmlPayload += `
     <div class="cart-item">
-      <h4>${itemName}</h4>
+      <h4>${item.title}</h4>
       <div class="cart-item-summary">
-        <span id="item-1-price">${itemPrice} kr</span> x
-        <input type="number" min="1" max="1000" class="cart-item-qty" value="${itemAmount}" /> =
-        <span id="item-1-stack-price">${itemSubTotal} kr</span>
+        <span id="item-1-price">${item.price.value} kr</span> x
+        <input type="number" min="1" max="1000" class="cart-item-qty" value="${itemCount}" /> =
+        <span id="item-1-stack-price">${itemTotal} kr</span>
       </div>
       <button class="remove-cart-item">x</button>
-    </div>`
+    </div>`;
 
-  })
-  panelFooterPriceContent.textContent = panelSubTotal
+  });
 
-  shoppingCartPanel.innerHTML = htmlPayload.length > 0 ? htmlPayload : "Failed to load store items.";
+  subtotalLabel.textContent = subTotal;
+
+  if (htmlPayload.length === 0) {
+    document.querySelector(".cart-empty-message").style.display = "block";
+    shoppingCartPanel.innerHTML = "";
+  } else {
+    document.querySelector(".cart-empty-message").style.display = "none";
+    shoppingCartPanel.innerHTML = htmlPayload;
+  }
 }
