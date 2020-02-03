@@ -9,9 +9,13 @@ div.shop-container section.shopping-cart {
     background-color: antiquewhite;
   }
 
+  .cart-item + .cart-item {
+    border-top: 1px dashed lightgray;
+  }
+
   .cart-item {
     position: relative;
-    padding: 0 15px 0 15px;
+    padding: 10px 15px;
 
     button.remove-cart-item {
       position: absolute;

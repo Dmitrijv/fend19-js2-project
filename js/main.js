@@ -1,7 +1,6 @@
 let itemInventory;
 
-$(document).ready(function () {
-
+$(document).ready(function() {
   // load shop items from local json file
   const INVENTORY_DIR = "json/inventory.json";
   if (Modernizr.fetch) {
@@ -13,13 +12,9 @@ $(document).ready(function () {
   // initiate clear cart button
   document.querySelector("#clear-cart-button").addEventListener("click", clearShoppingCart);
   updateShoppingCartWindow();
-
 });
 
-
-
 function loadStore(productsJson) {
-
   sessionStorage.setItem("inventory", JSON.stringify(productsJson));
 
   const productPanel = document.querySelector(".product-panel .panel-body");
@@ -31,7 +26,7 @@ function loadStore(productsJson) {
     <div data-item-id="${item.id}" class="product-card">
         <img class="img-fluid product-cover" src="img/product/product-${item.id}.jpg" alt="${item.title}" />
         <h4 id="product-name">${item.title}</h4>
-        <p>${item.description}</p>
+        <p class="product-description">${item.description}</p>
         <hr />
         <p class="product-price"><span class='product-price-value'>${item.price.value}</span> ${item.price.currency}</p>
         <div>
@@ -45,7 +40,7 @@ function loadStore(productsJson) {
   // add event listeners to "Add to cart" all buttons
   const addToCartButtons = document.querySelectorAll(".product-panel .panel-body button[data-item-id]");
   for (var i = 0; i < addToCartButtons.length; i++) {
-    addToCartButtons[i].addEventListener('click', clickAddToCartButton);
+    addToCartButtons[i].addEventListener("click", clickAddToCartButton);
   }
 }
 
@@ -74,7 +69,6 @@ function addItemToShoppingCart(itemID, itemCount) {
 }
 
 function clearShoppingCart() {
-
   // remove green outline from added items
   const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
   Object.keys(shoppingCart).forEach(itemID => {
@@ -87,21 +81,18 @@ function clearShoppingCart() {
 }
 
 function updateShoppingCartWindow() {
-
   const shoppingCartPanel = document.querySelector(".cart-item-list");
   const itemsCountLabel = document.querySelector("#cart-item-count");
-  const subtotalLabel = document.querySelector('#subtotal-value');
-  subtotalLabel.textContent = '';
+  const subtotalLabel = document.querySelector("#subtotal-value");
+  subtotalLabel.textContent = "";
 
   const inventory = JSON.parse(sessionStorage.getItem("inventory"));
   const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
-
 
   let subTotal = 0;
   let itemsCountTotal = 0;
   let htmlPayload = ``;
   Object.keys(shoppingCart).forEach(itemID => {
-
     const item = inventory.find(item => item.id === Number(itemID));
 
     const itemCount = shoppingCart[itemID];
@@ -119,7 +110,6 @@ function updateShoppingCartWindow() {
       </div>
       <button class="remove-cart-item">x</button>
     </div>`;
-
   });
 
   subtotalLabel.textContent = subTotal;

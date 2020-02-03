@@ -179,14 +179,14 @@ section.product-panel .product-card {
 }
 
 section.product-panel .product-card.in-basket {
-  border: 2px solid green;
+  border: 1px solid green;
 }
 
 section.product-panel .product-card img.product-cover {
   max-height: 150px;
 }
 
-section.product-panel .product-card h4[id^="product"] {
+section.product-panel .product-card h4.product-name {
   margin-top: 12px;
 }
 
@@ -217,9 +217,13 @@ div.shop-container section.shopping-cart .cart-item:hover {
   background-color: antiquewhite;
 }
 
+div.shop-container section.shopping-cart .cart-item + .cart-item {
+  border-top: 1px dashed lightgray;
+}
+
 div.shop-container section.shopping-cart .cart-item {
   position: relative;
-  padding: 0 15px 0 15px;
+  padding: 10px 15px;
 }
 
 div.shop-container section.shopping-cart .cart-item button.remove-cart-item {
