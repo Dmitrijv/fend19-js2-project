@@ -345,6 +345,10 @@ section.order-confirmation .order-description dd {
   text-align: right;
 }
 
+section.order-confirmation .order-description .product-cover-small {
+  width: 4vw;
+}
+
 section.order-confirmation table {
   margin: 2rem 5vw;
 }

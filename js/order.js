@@ -15,7 +15,7 @@ $(document).ready(function() {
     itemsCountTotal += itemCount;
     orderList.innerHTML += `
       <tr>
-        <td class="item-name">${item.title}</td>
+        <td class="item-name"><span><img class="product-cover-small" src="img/product/product-${item.id}.jpg" alt="${item.title}" /></span>${item.title}</td>
         <td class="item-qty">${itemCount}</td>
         <td class="item-price">${item.price.value} kr</td>
         <td class="item-total">${itemTotal} kr</td>
