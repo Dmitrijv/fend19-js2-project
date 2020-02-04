@@ -370,6 +370,7 @@ section.order-confirmation table td {
 
 section.order-confirmation table td .product-cover-small {
   width: 30px;
+  margin-right: 5px;
 }
 
 section.order-confirmation .address p {
