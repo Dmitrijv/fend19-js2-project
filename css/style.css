@@ -171,11 +171,29 @@ footer p + p {
 }
 
 section.product-panel .product-card {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "productDescriptionArea" "productInteractionArea";
+  -ms-grid-rows: auto min-content;
+      grid-template-rows: auto -webkit-min-content;
+      grid-template-rows: auto min-content;
   width: 30%;
   padding: 10px;
   margin-top: 1vw;
   border: 1px solid #ddd;
   border-radius: 4px;
+}
+
+section.product-panel .product-card div.product-description-wrapper {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: productDescriptionArea;
+}
+
+section.product-panel .product-card div.product-interaction-wrapper {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: productInteractionArea;
 }
 
 section.product-panel .product-card.in-basket {

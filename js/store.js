@@ -20,15 +20,17 @@ function loadStore(productsJson) {
     const inBasketFlag = shoppingCart[item.id] ? "in-basket" : "";
     htmlPayload += `
     <div data-item-id="${item.id}" class="product-card ${inBasketFlag}">
-        <img class="img-fluid product-cover" src="img/product/product-${item.id}.jpg" alt="${item.title}" />
-        <h4 id="product-name">${item.title}</h4>
-        <p class="product-description">${item.description}</p>
+      <div class="product-description-wrapper">
+          <img class="img-fluid product-cover" src="img/product/product-${item.id}.jpg" alt="${item.title}" />
+          <h4 id="product-name">${item.title}</h4>
+          <p class="product-description">${item.description}</p>
+      </div>
+      <div class="product-interaction-wrapper">
         <hr />
         <p class="product-price"><span class='product-price-value'>${item.price.value}</span> ${item.price.currency}</p>
-        <div>
         <button data-item-id="${item.id}" type="button" class="btn btn-success">Add to cart</button>
         <input data-item-id="${item.id}" type="number" min="1" max="1000" class="cart-item-qty" value="1" />
-        </div>
+      </div>
     </div>`;
   });
   productPanel.innerHTML = htmlPayload.length > 0 ? htmlPayload : "Failed to load store items.";

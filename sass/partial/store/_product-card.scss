@@ -1,9 +1,23 @@
 section.product-panel .product-card {
+  display: grid;
+  grid-template-areas:
+    "productDescriptionArea"
+    "productInteractionArea";
+  grid-template-rows: auto min-content;
+
   width: 30%;
   padding: 10px;
   margin-top: 1vw;
   border: 1px solid #ddd;
   border-radius: 4px;
+
+  div.product-description-wrapper {
+    grid-area: productDescriptionArea;
+  }
+
+  div.product-interaction-wrapper {
+    grid-area: productInteractionArea;
+  }
 
   &.in-basket {
     border: 1px solid green;
