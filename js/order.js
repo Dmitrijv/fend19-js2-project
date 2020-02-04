@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  const shoppingCart = JSON.parse(localStorage["shoppingCart"]);
+  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
   const inventory = JSON.parse(sessionStorage.getItem("inventory"));
   let orderList = document.querySelector(".order-list");
   let subTotal = 0;
