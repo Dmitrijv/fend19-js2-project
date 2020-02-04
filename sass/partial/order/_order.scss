@@ -1,0 +1,65 @@
+section.order-confirmation {
+  overflow: hidden;
+  font-size: 16px;
+  .order-description {
+    margin: 2rem 5vw;
+    line-height: 1.4rem;
+    h2 {
+      font-size: 1.2rem;
+    }
+
+    dl {
+      max-width: 360px;
+    }
+
+    dt {
+      font-weight: 600;
+      float: left;
+      clear: left;
+      text-align: left;
+    }
+
+    dd {
+      text-align: right;
+    }
+  }
+
+  table {
+    margin: 2rem 5vw;
+
+    .item-total {
+      text-align: right;
+    }
+    tr,
+    td,
+    th {
+      width: 90vw;
+      text-align: left;
+    }
+    tr + tr {
+      border-top: 1px dashed grey;
+    }
+
+    td {
+      height: 40px;
+    }
+  }
+
+  .address {
+    p {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  button.confirm-order-button {
+    font-size: 18px;
+    float: right;
+    margin: 0 5vw 2rem 5vw;
+  }
+
+  button.disabled {
+    background-color: #6c757d;
+    border: 0;
+  }
+}

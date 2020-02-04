@@ -1,83 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>order</title>
+  </head>
 
-  <link rel="stylesheet" href="css/order.css">
-  <title>order</title>
-</head>
+  <body>
+    <header>
+      <h1>FEND19 - JavaScript 2 - Grupp 7 - Project</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="./">Shop</a>
+          </li>
+          <li>
+            <a href="./order.html" class="active">Order</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-<body>
-  <header class="fixed-bg bg-1">
-    <h1>Orderbekräftelse</h1>
-  </header>
+    <main>
+      <section class="order-confirmation white-panel">
+        <div class="panel-heading">Order belräftelse</div>
 
-  <section>
-    <div class="greetings-content">
-      <h2>Tack för din order!</h2>
-      <h2>Vi har mottagit din order</h2>
-      <p>Kära kund,</p>
-      <p>Tack för din order.</p>
-      <p>Vi kommer att kontakta dig, dagen din order skickas.</p>
-      <p>Order 20200201:</p>
-    </div>
+        <div class="order-description">
+          <p>Tack för din beställning!</p>
+          <dl>
+            <dt>Kundnummer:</dt>
+            <dd>1323823</dd>
+            <dt>Beställningsdatum:</dt>
+            <dd>2020-01-06</dd>
+            <dt>Beställningsnummer:</dt>
+            <dd>100713104</dd>
+            <dt>Totalpris:</dt>
+            <dd>620.00 SEK</dd>
+          </dl>
+          <p>Kontrollera att dina uppgifter ovan stämmer.</p>
+        </div>
 
-    <table>
-      <thead class="font-bold">
-        <tr>
-          <th>
-            Produkt
-          </th>
-          <th>
-            Antal
-          </th>
-          <th>
-            Pris
-          </th>
-          <th>
-            Totalt
-          </th>
-        </tr>
-      </thead>
-      <tbody class="order-list">
-    </table>
+        <table>
+          <thead class="font-bold">
+            <tr>
+              <th>
+                Produkt
+              </th>
+              <th>
+                Antal
+              </th>
+              <th>
+                Pris
+              </th>
+              <th class="item-total">
+                Totalt
+              </th>
+            </tr>
+          </thead>
+          <tbody class="order-list"></tbody>
+        </table>
 
-    <div class="new-order-content">
-      <a href="../index.html" class="btn btn-primary btn-lg active inactive" role="button" aria-pressed="true">Skapa en
-        ny order</a>
-    </div>
+        <button  class="btn btn-success confirm-order-button" role="button" aria-pressed="true"
+          >Bekräfta order</a
+        >
+      </section>
+    </main>
 
-    <div class="address">
-      <p>Fakturaadress:</p>
-      <p><i>Johan Svensson</i></p>
-      <p><i>Storgatan 10</i></p>
-      <p><i>12345, Stockholm</i></p>
-      <p><i>Sverige</i></p>
-    </div>
+    <footer>
+      <a href="/json/inventory.json" target="_blank">inventory.json</a>
+      <p>FEND19 - JavaScript 2 - Project</p>
+      <p>Grupp 7, Nackademin</p>
+      <p>2020-01-31</p>
+    </footer>
 
-  </section>
+    <!-- dependencies -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
 
-  <footer>
-    <a href="/json/inventory.json" target="_blank">inventory.json</a>
-    <p>FEND19 - JavaScript 2 - Project</p>
-    <p>Grupp 7, Nackademin</p>
-    <p>2020-01-31</p>
-  </footer>
-
-  <!-- dependencies -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
-  <!-- shop -->
-  <script src="js/order.js"></script>
-</body>
-
-</body>
-
+    <!-- shop -->
+    <script src="js/order.js"></script>
+  </body>
 </html>

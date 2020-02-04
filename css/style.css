@@ -30,6 +30,7 @@ main {
 }
 
 .white-panel div.panel-heading {
+  text-align: center;
   font-size: 18px;
   font-weight: 600;
   color: #333;
@@ -295,5 +296,73 @@ div.shop-container section.shopping-cart {
   -ms-grid-row-span: 2;
   -ms-grid-column: 2;
   grid-area: shoppingCart;
+}
+
+section.order-confirmation {
+  overflow: hidden;
+  font-size: 16px;
+}
+
+section.order-confirmation .order-description {
+  margin: 2rem 5vw;
+  line-height: 1.4rem;
+}
+
+section.order-confirmation .order-description h2 {
+  font-size: 1.2rem;
+}
+
+section.order-confirmation .order-description dl {
+  max-width: 360px;
+}
+
+section.order-confirmation .order-description dt {
+  font-weight: 600;
+  float: left;
+  clear: left;
+  text-align: left;
+}
+
+section.order-confirmation .order-description dd {
+  text-align: right;
+}
+
+section.order-confirmation table {
+  margin: 2rem 5vw;
+}
+
+section.order-confirmation table .item-total {
+  text-align: right;
+}
+
+section.order-confirmation table tr,
+section.order-confirmation table td,
+section.order-confirmation table th {
+  width: 90vw;
+  text-align: left;
+}
+
+section.order-confirmation table tr + tr {
+  border-top: 1px dashed grey;
+}
+
+section.order-confirmation table td {
+  height: 40px;
+}
+
+section.order-confirmation .address p {
+  padding: 0;
+  margin: 0;
+}
+
+section.order-confirmation button.confirm-order-button {
+  font-size: 18px;
+  float: right;
+  margin: 0 5vw 2rem 5vw;
+}
+
+section.order-confirmation button.disabled {
+  background-color: #6c757d;
+  border: 0;
 }
 /*# sourceMappingURL=style.css.map */
