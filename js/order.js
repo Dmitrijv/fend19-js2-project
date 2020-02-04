@@ -4,6 +4,8 @@ $(document).ready(function () {
   let orderList = document.querySelector(".order-list");
   let subTotal = 0;
   let itemsCountTotal = 0;
+  let today = new Date();
+  let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
   orderList.innerHTML = ``;
 
   Object.keys(shoppingCart).forEach(itemID => {
@@ -34,6 +36,7 @@ $(document).ready(function () {
 
   document.querySelector('.totalPrice').textContent = subTotal + " kr";
   document.querySelector(".products-amount").innerHTML = itemsCountTotal;
+  document.querySelector('.dateToday').textContent = date;
 
   const confirmButton = document.querySelector(".confirm-order-button");
   if (itemsCountTotal === 0) {
