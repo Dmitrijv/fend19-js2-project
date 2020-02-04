@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
   const inventory = JSON.parse(sessionStorage.getItem("inventory"));
   let orderList = document.querySelector(".order-list");
@@ -32,6 +32,7 @@ $(document).ready(function() {
     </tbody>
     `;
 
+  document.querySelector('.totalPrice').textContent = subTotal + " kr";
   document.querySelector(".products-amount").innerHTML = itemsCountTotal;
 
   const confirmButton = document.querySelector(".confirm-order-button");
