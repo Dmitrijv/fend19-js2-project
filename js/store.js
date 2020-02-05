@@ -22,7 +22,7 @@ function loadStore(productsJson) {
     <div data-item-id="${item.id}" class="product-card ${inBasketFlag}">
       <div class="product-description-wrapper">
           <img class="img-fluid product-cover" src="img/product/product-${item.id}.jpg" alt="${item.title}" />
-          <h4 id="product-name">${item.title}</h4>
+          <h4 class="product-name">${item.title}</h4>
           <p class="product-description">${item.description}</p>
       </div>
       <div class="product-interaction-wrapper">
