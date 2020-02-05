@@ -8,11 +8,16 @@ $(document).ready(function () {
   }
 });
 
+function getShoppingCart() {
+  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+  return !shoppingCart || Object.keys(shoppingCart).length === 0 ? {} : shoppingCart;
+}
+
 function loadStore(productsJson) {
   sessionStorage.setItem("inventory", JSON.stringify(productsJson));
 
   const productPanel = document.querySelector(".product-panel .panel-body");
-  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+  const shoppingCart = getShoppingCart();
 
   // generate item HTML and append it to store panel
   let htmlPayload = ``;
@@ -53,18 +58,10 @@ function assignButtonEvents() {
 
 function clickAddToCartButton(event) {
   const button = event.currentTarget;
-
   const itemID = button.dataset.itemId;
   const itemCount = Number(document.querySelector(`input[data-item-id="${itemID}"]`).value);
   addItemToShoppingCart(itemID, itemCount);
-
-  const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
-  productCard.classList.add("in-basket");
-}
-
-function getShoppingCart() {
-  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
-  return !shoppingCart || Object.keys(shoppingCart).length === 0 ? {} : shoppingCart;
+  document.querySelector(`.product-card[data-item-id="${itemID}"]`).classList.add("in-basket");
 }
 
 function addItemToShoppingCart(itemID, itemCount) {
@@ -83,23 +80,21 @@ function removeItemFromShoppingCart(itemID) {
 
 function clearShoppingCart() {
   // remove green outline from added items
-  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+  const shoppingCart = getShoppingCart();
   Object.keys(shoppingCart).forEach(itemID => {
     const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
     productCard.classList.remove("in-basket");
   });
-
+  // persist an empty cart and update cart
   localStorage.setItem("shoppingCart", JSON.stringify({}));
   updateShoppingCartWindow();
 }
 
 function updateShoppingCartWindow() {
   const shoppingCartPanel = document.querySelector(".cart-item-list");
-  const subtotalLabel = document.querySelector("#subtotal-value");
-  subtotalLabel.textContent = "";
 
   const inventory = JSON.parse(sessionStorage.getItem("inventory"));
-  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+  const shoppingCart = getShoppingCart();
 
   let subTotal = 0;
   let itemsCountTotal = 0;
@@ -124,10 +119,8 @@ function updateShoppingCartWindow() {
     </div>`;
   });
 
-  subtotalLabel.textContent = subTotal;
-
-  const itemsCountLabel = document.querySelector("#cart-item-count");
-  itemsCountLabel.textContent = itemsCountTotal;
+  document.querySelector("#subtotal-value").textContent = subTotal;
+  document.querySelector("#cart-item-count").textContent = itemsCountTotal;
 
   if (htmlPayload.length === 0) {
     document.querySelector(".cart-empty-message").style.display = "block";
@@ -143,7 +136,7 @@ function updateShoppingCartWindow() {
     stackInputs[i].addEventListener("change", onCartItemStackUpdated);
   }
 
-  // add event listeners to all X buttons
+  // add event listeners to all "X" buttons
   const addToCartButtons = document.querySelectorAll(".cart-item button.remove-cart-item");
   for (var i = 0; i < addToCartButtons.length; i++) {
     addToCartButtons[i].addEventListener("click", onDeleteCartItem);
@@ -161,7 +154,7 @@ function onCartItemStackUpdated(event) {
     newStackSize = 1;
   }
 
-  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+  const shoppingCart = getShoppingCart();
   const inventory = JSON.parse(sessionStorage.getItem("inventory"));
 
   // save new stack size
