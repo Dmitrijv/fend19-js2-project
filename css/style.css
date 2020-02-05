@@ -272,6 +272,7 @@ div.shop-container section.shopping-cart .cart-empty-message {
 
 div.shop-container section.shopping-cart p.subtotal-label {
   font-weight: bold;
+  font-size: 16px;
 }
 
 div.shop-container section.shopping-cart .shopping-cart-content-wrapper {
