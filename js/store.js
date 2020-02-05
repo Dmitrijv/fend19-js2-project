@@ -42,6 +42,7 @@ function loadStore(productsJson) {
 
   assignButtonEvents();
   updateShoppingCartWindow();
+  checkOrderStatus()
 }
 
 function assignButtonEvents() {
@@ -54,6 +55,7 @@ function assignButtonEvents() {
   document.querySelector("#clear-cart-button").addEventListener("click", clearShoppingCart);
   // set up clear to order button
   document.querySelector("#to-order-button").addEventListener("click", onToOrderClick);
+  checkOrderStatus()
 }
 
 function clickAddToCartButton(event) {
@@ -141,6 +143,7 @@ function updateShoppingCartWindow() {
   for (var i = 0; i < addToCartButtons.length; i++) {
     addToCartButtons[i].addEventListener("click", onDeleteCartItem);
   }
+  checkOrderStatus()
 }
 
 function onCartItemStackUpdated(event) {
@@ -182,11 +185,20 @@ function onDeleteCartItem(event) {
   const button = event.currentTarget;
   const itemID = button.dataset.itemId;
   removeItemFromShoppingCart(itemID);
-  const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
-  productCard.classList.remove("in-basket");
+  document.querySelector(`.product-card[data-item-id="${itemID}"]`).classList.remove("in-basket");
+  checkOrderStatus()
 }
 
 function onToOrderClick() {
   const shoppingCart = getShoppingCart();
   if (Object.keys(shoppingCart).length > 0) location.href = "/order.html";
+}
+
+function checkOrderStatus() {
+  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+  if (Object.keys(shoppingCart).length == 0) {
+    document.querySelector('#to-order-button').setAttribute('disabled', '')
+  } else {
+    document.querySelector('#to-order-button').removeAttribute("disabled");
+  }
 }

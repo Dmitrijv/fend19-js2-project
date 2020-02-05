@@ -229,10 +229,17 @@ section.product-panel .product-card input {
   float: right;
 }
 
+<<<<<<< HEAD
 div.shop-container section.shopping-cart .shopping-cart-content-wrapper {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+=======
+div.shop-container section.shopping-cart button[disabled] {
+  background-color: #6c757d;
+  background-color: #6c757d;
+  border: 0;
+>>>>>>> disable-confirm-btn---messy-version
 }
 
 div.shop-container section.shopping-cart .panel-heading #cart-item-count {
@@ -384,7 +391,7 @@ section.order-confirmation button.confirm-order-button {
   margin: 0 5vw 2rem 5vw;
 }
 
-section.order-confirmation button.disabled {
+section.order-confirmation button[disabled] {
   background-color: #6c757d;
   border: 0;
 }
