@@ -5,7 +5,7 @@ $(document).ready(function () {
   let subTotal = 0;
   let itemsCountTotal = 0;
   let today = new Date();
-  let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   orderList.innerHTML = ``;
 
   Object.keys(shoppingCart).forEach(itemID => {
@@ -40,12 +40,8 @@ $(document).ready(function () {
 
   const confirmButton = document.querySelector(".confirm-order-button");
   if (itemsCountTotal === 0) {
-    confirmButton.setAttribute("aria-disabled", true);
-    confirmButton.classList.add("disabled");
     confirmButton.setAttribute("disabled", "");
   } else {
-    confirmButton.setAttribute("aria-disabled", false);
-    confirmButton.classList.remove("disabled");
     confirmButton.removeAttribute("disabled");
   }
 
@@ -55,7 +51,6 @@ $(document).ready(function () {
 function onOrderConfirmedClick(event) {
   if (confirm("Vill du bekräfta din order?")) {
     localStorage.setItem("shoppingCart", JSON.stringify({}));
-    alert("Tack för din order!");
     location.href = "/index.html";
   } else {
     event.preventDefault();
