@@ -186,7 +186,7 @@ function onDeleteCartItem(event) {
   const itemID = button.dataset.itemId;
   removeItemFromShoppingCart(itemID);
   document.querySelector(`.product-card[data-item-id="${itemID}"]`).classList.remove("in-basket");
-  checkOrderStatus()
+  checkOrderStatus();
 }
 
 function onToOrderClick() {
