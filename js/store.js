@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // load shop items from local json file
   const INVENTORY_DIR = "json/inventory.json";
   if (Modernizr.fetch) {
@@ -168,13 +168,14 @@ function onCartItemStackUpdated(event) {
 
   // update new price total for this item
   let itemPrice = inventory.find(item => item.id === Number(itemID)).price.value;
-  document.querySelector(`.item-stack-price[data-item-id="${itemID}"]`).textContent = itemPrice * newStackSize;
+  document.querySelector(`.item-stack-price[data-item-id="${itemID}"]`).textContent = (itemPrice * newStackSize).toFixed(2);
 
   // update sub total for the entire cart
   const newSubTotalValue = Object.keys(shoppingCart).reduce((total, id) => {
     const item = inventory.find(item => item.id === Number(id));
     return total + item.price.value * shoppingCart[id];
-  }, 0);
+  }, 0).toFixed(2);
+
   document.querySelector(`#subtotal-value`).textContent = newSubTotalValue;
 }
 
