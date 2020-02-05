@@ -38,6 +38,9 @@ $(document).ready(function () {
   document.querySelector(".products-amount").innerHTML = itemsCountTotal;
   document.querySelector('.dateToday').textContent = date;
 
+  const myBtn2 = document.querySelector('.goback-Btn');
+  myBtn2.addEventListener("click", function (){ location.href = "/index.html"});
+
   const confirmButton = document.querySelector(".confirm-order-button");
   if (itemsCountTotal === 0) {
     confirmButton.setAttribute("disabled", "");
