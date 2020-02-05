@@ -229,31 +229,30 @@ section.product-panel .product-card input {
   float: right;
 }
 
-<<<<<<< HEAD
 div.shop-container section.shopping-cart .shopping-cart-content-wrapper {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-=======
-div.shop-container section.shopping-cart button[disabled] {
+}
+
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper button[disabled] {
   background-color: #6c757d;
   background-color: #6c757d;
   border: 0;
->>>>>>> disable-confirm-btn---messy-version
 }
 
-div.shop-container section.shopping-cart .panel-heading #cart-item-count {
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper .panel-heading #cart-item-count {
   background-color: #555;
   color: white;
   padding: 0 4px;
 }
 
-div.shop-container section.shopping-cart .cart-item {
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-item {
   position: relative;
   padding: 10px 15px;
 }
 
-div.shop-container section.shopping-cart .cart-item button.remove-cart-item {
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-item button.remove-cart-item {
   position: absolute;
   top: -15px;
   right: 0px;
@@ -265,25 +264,25 @@ div.shop-container section.shopping-cart .cart-item button.remove-cart-item {
   text-transform: none;
 }
 
-div.shop-container section.shopping-cart .cart-item button.remove-cart-item:hover {
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-item button.remove-cart-item:hover {
   color: red;
 }
 
-div.shop-container section.shopping-cart .cart-item:hover {
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-item:hover {
   background-color: whitesmoke;
 }
 
-div.shop-container section.shopping-cart .cart-item + .cart-item {
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-item + .cart-item {
   border-top: 1px dashed lightgray;
 }
 
-div.shop-container section.shopping-cart .cart-empty-message {
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-empty-message {
   display: none;
   text-align: center;
   color: #999;
 }
 
-div.shop-container section.shopping-cart p.subtotal-label {
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper p.subtotal-label {
   font-weight: bold;
   font-size: 16px;
 }
