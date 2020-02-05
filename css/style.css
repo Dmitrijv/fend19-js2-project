@@ -229,18 +229,16 @@ section.product-panel .product-card input {
   float: right;
 }
 
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 div.shop-container section.shopping-cart .panel-heading #cart-item-count {
   background-color: #555;
   color: white;
   padding: 0 4px;
-}
-
-div.shop-container section.shopping-cart .cart-item:hover {
-  background-color: whitesmoke;
-}
-
-div.shop-container section.shopping-cart .cart-item + .cart-item {
-  border-top: 1px dashed lightgray;
 }
 
 div.shop-container section.shopping-cart .cart-item {
@@ -264,6 +262,14 @@ div.shop-container section.shopping-cart .cart-item button.remove-cart-item:hove
   color: red;
 }
 
+div.shop-container section.shopping-cart .cart-item:hover {
+  background-color: whitesmoke;
+}
+
+div.shop-container section.shopping-cart .cart-item + .cart-item {
+  border-top: 1px dashed lightgray;
+}
+
 div.shop-container section.shopping-cart .cart-empty-message {
   display: none;
   text-align: center;
@@ -273,12 +279,6 @@ div.shop-container section.shopping-cart .cart-empty-message {
 div.shop-container section.shopping-cart p.subtotal-label {
   font-weight: bold;
   font-size: 16px;
-}
-
-div.shop-container section.shopping-cart .shopping-cart-content-wrapper {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
 }
 
 div.shop-container {
