@@ -63,7 +63,7 @@ section.order-confirmation {
     margin: 0 5vw 2rem 5vw;
   }
 
-  button.disabled {
+  button[disabled] {
     background-color: #6c757d;
     border: 0;
   }

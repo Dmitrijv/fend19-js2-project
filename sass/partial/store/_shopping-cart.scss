@@ -1,4 +1,10 @@
 div.shop-container section.shopping-cart {
+  button[disabled] {
+    background-color: #6c757d;
+    background-color: #6c757d;
+    border: 0;
+  }
+
   .panel-heading #cart-item-count {
     background-color: #555;
     color: white;

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // load shop items from local json file
   const INVENTORY_DIR = "json/inventory.json";
   if (Modernizr.fetch) {
@@ -185,8 +185,7 @@ function onDeleteCartItem(event) {
   const button = event.currentTarget;
   const itemID = button.dataset.itemId;
   removeItemFromShoppingCart(itemID);
-  const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
-  productCard.classList.remove("in-basket");
+  document.querySelector(`.product-card[data-item-id="${itemID}"]`).classList.remove("in-basket");
   checkOrderStatus()
 }
 
@@ -198,10 +197,8 @@ function onToOrderClick() {
 function checkOrderStatus() {
   const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
   if (Object.keys(shoppingCart).length == 0) {
-    document.querySelector('#to-order-button').setAttribute("style", "background-color: #6c757d;");
-    document.querySelector('#to-order-button').setAttribute('disabled', 'disabled')
+    document.querySelector('#to-order-button').setAttribute('disabled', '')
   } else {
-    document.querySelector('#to-order-button').setAttribute('style', 'background-color: #17a2b8')
-    document.querySelector('#to-order-button').disabled = false
+    document.querySelector('#to-order-button').removeAttribute("disabled");
   }
 }
