@@ -153,9 +153,9 @@ function updateShoppingCartWindow() {
 function onCartItemStackUpdated(event) {
   const input = event.currentTarget;
   const itemID = input.dataset.itemId;
-  let newStackSize = Number(input.value);
 
-  // default stack size to 1 if input is invalid
+  let newStackSize = Number(input.value);
+  // set default stack size to 1 if input is invalid
   if (!newStackSize || newStackSize < 0) {
     input.value = 1;
     newStackSize = 1;

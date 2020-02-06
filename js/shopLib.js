@@ -20,6 +20,19 @@ shopLib = (function() {
         .catch(err => console.error(err));
     },
 
+    getShoppingCart: function() {
+      const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+      return !shoppingCart || Object.keys(shoppingCart).length === 0 ? {} : shoppingCart;
+    },
+
+    setShoppingCart: function(shoppingCartJson) {
+      localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+    },
+
+    clearShoppingCart: function() {
+      localStorage.setItem("shoppingCart", JSON.stringify({}));
+    },
+
     random: function(min, max) {
       returnMath.floor(Math.random() * (max + 1 - min) + min);
     }
