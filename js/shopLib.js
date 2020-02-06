@@ -22,12 +22,12 @@ shopLib = (function() {
     },
 
     getInventory: function() {
-      const inventory = JSON.parse(localStorage.getItem("inventory"));
+      const inventory = JSON.parse(sessionStorage.getItem("inventory"));
       return !inventory || Object.keys(inventory).length === 0 ? {} : inventory;
     },
 
     setInventory: function(inventory) {
-      localStorage.setItem("inventory", JSON.stringify(inventory));
+      sessionStorage.setItem("inventory", JSON.stringify(inventory));
     },
 
     /*

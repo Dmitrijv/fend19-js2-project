@@ -8,11 +8,6 @@ $(document).ready(function() {
   }
 });
 
-function getShoppingCart() {
-  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
-  return !shoppingCart || Object.keys(shoppingCart).length === 0 ? {} : shoppingCart;
-}
-
 function loadStore(productsJson) {
   shopLib.setInventory(productsJson);
   const shoppingCart = getShoppingCart();
