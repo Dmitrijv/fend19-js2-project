@@ -143,7 +143,6 @@ function updateShoppingCartWindow() {
   }
 
   // disable checkout button if no items are in the cart
-  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
   if (Object.keys(shoppingCart).length == 0) {
     document.querySelector("#to-order-button").setAttribute("disabled", "");
   } else {
