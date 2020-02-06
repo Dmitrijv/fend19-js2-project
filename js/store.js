@@ -130,6 +130,8 @@ function updateShoppingCartWindow() {
     <div class="cart-item">
       <h4>${item.title}</h4>
       <div class="cart-item-summary">
+      <img class="product-cover-small" src="img/product/product-${item.id}.jpg" alt="${item.title}" />
+      
         <span data-item-id="${item.id}" class="item-price">${item.price.value}</span> ${item.price.currency} x
         <input data-item-id="${item.id}" type="number" min="1" max="1000" class="cart-item-qty" value="${itemCount}" /> =
         <span data-item-id="${item.id}" class="item-stack-price">${stackPrice}</span> kr

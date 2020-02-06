@@ -34,6 +34,22 @@ div.shop-container section.shopping-cart {
       button.remove-cart-item:hover {
         color: red;
       }
+
+      .cart-item-summary {
+        display: flex;
+        align-items: center;
+        .product-cover-small {
+          height: 29.67px;
+          margin-right: 5px;
+          border-radius: 5px;
+        }
+        input{
+          margin: 0 5px;
+        }
+        .item-stack-price {
+          margin-left: 5px;
+        }
+      }
     }
 
     .cart-item:hover {
