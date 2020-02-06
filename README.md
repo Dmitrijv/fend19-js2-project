@@ -1,13 +1,15 @@
-# JavaScript 2 – Projektarbete – Skapa en varukorg
+# FEND19 - JavaScript 2 – Project: Shopping cart
 
-Syftet med projektet är att vidareutveckla de studerandes kunskaper och färdigheter i JavaScript-kodning för frontend-utveckling.
+![preview](/readme/shopBanner.jpg)
 
-## Shop
+## Description
 
-### För G-nivå
+The purpose of this project is to develop a simple item shop in a team of three students. Shop items must be loaded from a json file.
 
-1. Allt skall utvecklas från scratch i HTML, CSS och JavaScript. Ni får kopiera CSS-kod från https://getbootstrap.com/. Ni får använda jQuery Core men inte jQuery Plugins.
+## Implementation
 
-## Order
+### Loading shop items
 
-## shopLib
+### Adding items to cart
+
+### shopLib
