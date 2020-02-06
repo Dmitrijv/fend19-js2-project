@@ -1,6 +1,7 @@
 shopLib = (function() {
-  const info = "shopLib.js är ett bibliotek med hjälp funktioner";
+  const info = "hjälp funktioner till shoppen";
   const version = "0.1";
+
   let shopLib = {
     loadJsonByXhr: function(url, callback) {
       let xhr = new XMLHttpRequest();
@@ -20,22 +21,34 @@ shopLib = (function() {
         .catch(err => console.error(err));
     },
 
+    getInventory: function() {
+      const inventory = JSON.parse(localStorage.getItem("inventory"));
+      return !inventory || Object.keys(inventory).length === 0 ? {} : inventory;
+    },
+
+    setInventory: function(inventory) {
+      localStorage.setItem("inventory", JSON.stringify(inventory));
+    },
+
+    /*
+    returns a json that follows the following structure:
+    {
+      "item id": item count
+    } 
+    */
     getShoppingCart: function() {
       const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
       return !shoppingCart || Object.keys(shoppingCart).length === 0 ? {} : shoppingCart;
     },
 
-    setShoppingCart: function(shoppingCartJson) {
+    setShoppingCart: function(shoppingCart) {
       localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
     },
 
     clearShoppingCart: function() {
       localStorage.setItem("shoppingCart", JSON.stringify({}));
-    },
-
-    random: function(min, max) {
-      returnMath.floor(Math.random() * (max + 1 - min) + min);
     }
   };
+
   return shopLib;
 })();

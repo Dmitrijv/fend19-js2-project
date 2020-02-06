@@ -1,10 +1,10 @@
 $(document).ready(function() {
-  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
-  const inventory = JSON.parse(sessionStorage.getItem("inventory"));
-  let orderList = document.querySelector(".order-list");
+  const shoppingCart = shopLib.getShoppingCart();
+  const inventory = shopLib.getInventory();
+
   let subTotal = 0;
   let itemsCountTotal = 0;
-  // orderList.innerHTML = ``;
+  let orderList = document.querySelector(".order-list");
 
   Object.keys(shoppingCart).forEach(itemID => {
     const item = inventory.find(item => item.id === Number(itemID));
@@ -48,7 +48,7 @@ $(document).ready(function() {
 
 function onOrderConfirmedClick(event) {
   if (confirm("Vill du bekräfta din order?")) {
-    localStorage.setItem("shoppingCart", JSON.stringify({}));
+    shopLib.clearShoppingCart();
     location.href = "/index.html";
   } else {
     event.preventDefault();

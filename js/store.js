@@ -14,13 +14,13 @@ function getShoppingCart() {
 }
 
 function loadStore(productsJson) {
-  sessionStorage.setItem("inventory", JSON.stringify(productsJson));
-
-  const productPanel = document.querySelector(".product-panel .panel-body");
+  shopLib.setInventory(productsJson);
   const shoppingCart = getShoppingCart();
 
-  // generate item HTML and append it to store panel
   let htmlPayload = ``;
+  const productPanel = document.querySelector(".product-panel .panel-body");
+
+  // generate item HTML and append it to store panel
   productsJson.forEach(item => {
     const inBasketFlag = shoppingCart[item.id] ? "in-basket" : "";
     htmlPayload += `
@@ -37,23 +37,20 @@ function loadStore(productsJson) {
         <input data-item-id="${item.id}" type="number" min="1" max="1000" class="cart-item-qty" value="1" />
       </div>
     </div>`;
-  });
+  }); // end of iterating through shop inventory
+
   productPanel.innerHTML = htmlPayload.length > 0 ? htmlPayload : "Failed to load store items.";
 
-  assignButtonEvents();
-  updateShoppingCartWindow();
-}
-
-function assignButtonEvents() {
-  // add event listeners to all "Add to cart" buttons
+  // add event listeners to "Add to cart" buttons
   const addToCartButtons = document.querySelectorAll(".product-panel .panel-body button[data-item-id]");
   for (var i = 0; i < addToCartButtons.length; i++) {
     addToCartButtons[i].addEventListener("click", clickAddToCartButton);
   }
-  // set up clear cart button
+
   document.querySelector("#clear-cart-button").addEventListener("click", clearShoppingCart);
-  // set up clear to order button
   document.querySelector("#to-order-button").addEventListener("click", onToOrderClick);
+
+  updateShoppingCartWindow();
 }
 
 function clickAddToCartButton(event) {
@@ -67,60 +64,60 @@ function clickAddToCartButton(event) {
 function addItemToShoppingCart(itemID, itemCount) {
   const shoppingCart = getShoppingCart();
   shoppingCart[itemID] = Number(shoppingCart[itemID] + itemCount) || itemCount;
-  localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+  shopLib.setShoppingCart(shoppingCart);
   updateShoppingCartWindow();
 }
 
 function removeItemFromShoppingCart(itemID) {
-  const shoppingCart = getShoppingCart();
+  const shoppingCart = shopLib.getShoppingCart();
   delete shoppingCart[itemID];
-  localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+  shopLib.setShoppingCart(shoppingCart);
   updateShoppingCartWindow();
 }
 
 function clearShoppingCart() {
   // remove green outline from added items
-  const shoppingCart = getShoppingCart();
+  const shoppingCart = shopLib.getShoppingCart();
   Object.keys(shoppingCart).forEach(itemID => {
     const productCard = document.querySelector(`.product-card[data-item-id="${itemID}"]`);
     productCard.classList.remove("in-basket");
   });
-  // persist an empty cart and update cart
-  localStorage.setItem("shoppingCart", JSON.stringify({}));
+
+  shopLib.clearShoppingCart();
   updateShoppingCartWindow();
 }
 
 function updateShoppingCartWindow() {
   const shoppingCartPanel = document.querySelector(".cart-item-list");
 
-  const inventory = JSON.parse(sessionStorage.getItem("inventory"));
-  const shoppingCart = getShoppingCart();
+  const inventory = shopLib.getInventory();
+  const shoppingCart = shopLib.getShoppingCart();
 
-  let subTotal = 0;
-  let itemsCountTotal = 0;
+  let totalPrice = 0;
+  let totalItemCount = 0;
   let htmlPayload = ``;
   Object.keys(shoppingCart).forEach(itemID => {
     const item = inventory.find(item => item.id === Number(itemID));
 
     const itemCount = Number(shoppingCart[itemID]);
-    const itemTotal = item.price.value * itemCount;
+    const stackPrice = item.price.value * itemCount;
 
-    subTotal += itemTotal;
-    itemsCountTotal += itemCount;
+    totalPrice += stackPrice;
+    totalItemCount += itemCount;
     htmlPayload += `
     <div class="cart-item">
       <h4>${item.title}</h4>
       <div class="cart-item-summary">
         <span data-item-id="${item.id}" class="item-price">${item.price.value}</span> ${item.price.currency} x
         <input data-item-id="${item.id}" type="number" min="1" max="1000" class="cart-item-qty" value="${itemCount}" /> =
-        <span data-item-id="${item.id}" class="item-stack-price">${itemTotal}</span> kr
+        <span data-item-id="${item.id}" class="item-stack-price">${stackPrice}</span> kr
       </div>
       <button data-item-id="${item.id}" class="remove-cart-item">x</button>
     </div>`;
   });
 
-  document.querySelector("#subtotal-value").textContent = subTotal;
-  document.querySelector("#cart-item-count").textContent = itemsCountTotal;
+  document.querySelector("#subtotal-value").textContent = totalPrice;
+  document.querySelector("#cart-item-count").textContent = totalItemCount;
 
   if (htmlPayload.length === 0) {
     document.querySelector(".cart-empty-message").style.display = "block";
@@ -161,14 +158,13 @@ function onCartItemStackUpdated(event) {
     newStackSize = 1;
   }
 
-  const shoppingCart = getShoppingCart();
-  const inventory = JSON.parse(sessionStorage.getItem("inventory"));
+  const shoppingCart = shopLib.getShoppingCart();
+  const inventory = shopLib.getInventory();
 
-  // save new stack size
   shoppingCart[itemID] = newStackSize;
-  localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+  shopLib.setShoppingCart(shoppingCart);
 
-  // update number of items in cart
+  // update total number of items in the cart
   const newItemCount = Object.values(shoppingCart).reduce((sum, value) => sum + Number(value), 0);
   document.querySelector("#cart-item-count").textContent = newItemCount;
 
@@ -197,6 +193,6 @@ function onDeleteCartItem(event) {
 }
 
 function onToOrderClick() {
-  const shoppingCart = getShoppingCart();
+  const shoppingCart = shopLib.getShoppingCart();
   if (Object.keys(shoppingCart).length > 0) location.href = "/order.html";
 }
