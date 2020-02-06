@@ -15,12 +15,18 @@ $(document).ready(function() {
     itemsCountTotal += itemCount;
     orderList.innerHTML += `
       <tr>
-        <td class="item-name"><span><img class="product-cover-small" src="img/product/product-${item.id}.jpg" alt="${item.title}" /></span>${item.title}</td>
+        <td class="item-name">
+          <span>
+            <img class="product-cover-small" src="img/product/product-${item.id}.jpg" alt="${item.title}" />
+          </span>
+          ${item.title}</td>
         <td class="item-qty">${itemCount}</td>
         <td class="item-price">${item.price.value} kr</td>
-        <td class="item-total">${itemTotal} kr</td>
+        <td class="item-total">${itemTotal.toFixed(2)} kr</td>
       </tr>`;
   });
+
+  subTotal = subTotal.toFixed(2);
 
   orderList.innerHTML += `
     <tr class="font-bold">
@@ -36,8 +42,10 @@ $(document).ready(function() {
   document.querySelector(".products-amount").innerHTML = itemsCountTotal;
   document.querySelector(".dateToday").textContent = new Date().toLocaleString().slice(0, -6);
 
-  const myBtn2 = document.querySelector('.goback-Btn');
-  myBtn2.addEventListener("click", function (){ location.href = "/index.html"});
+  const myBtn2 = document.querySelector(".goback-Btn");
+  myBtn2.addEventListener("click", function() {
+    location.href = "/index.html";
+  });
 
   const confirmButton = document.querySelector(".confirm-order-button");
   if (itemsCountTotal === 0) {
