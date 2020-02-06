@@ -291,6 +291,27 @@ div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-it
   margin-left: 5px;
 }
 
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-item .svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-item .svg-icon path,
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-item .svg-icon polygon,
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-item .svg-icon rect {
+  fill: #4691f6;
+}
+
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-item .svg-icon circle {
+  stroke: #4691f6;
+  stroke-width: 1;
+}
+
+div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-item svg:hover {
+  stroke: red;
+  stroke-width: 1;
+}
+
 div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-item:hover {
   background-color: whitesmoke;
 }

@@ -43,12 +43,32 @@ div.shop-container section.shopping-cart {
           margin-right: 5px;
           border-radius: 5px;
         }
-        input{
+        input {
           margin: 0 5px;
         }
         .item-stack-price {
           margin-left: 5px;
         }
+      }
+      .svg-icon {
+        width: 1em;
+        height: 1em;
+      }
+
+      .svg-icon path,
+      .svg-icon polygon,
+      .svg-icon rect {
+        fill: #4691f6;
+      }
+
+      .svg-icon circle {
+        stroke: #4691f6;
+        stroke-width: 1;
+      }
+
+      svg:hover{
+        stroke: red;
+        stroke-width: 1;
       }
     }
 
