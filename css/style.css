@@ -275,10 +275,11 @@ div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-it
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: medium;
 }
 
 div.shop-container section.shopping-cart .shopping-cart-content-wrapper .cart-item .cart-item-summary .product-cover-small {
-  height: 29.67px;
+  height: 33px;
   margin-right: 5px;
   border-radius: 5px;
 }
