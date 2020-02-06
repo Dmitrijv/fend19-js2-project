@@ -293,12 +293,11 @@ div.shop-container {
   grid-gap: 1vw;
   -ms-grid-columns: 7fr 3fr;
       grid-template-columns: 7fr 3fr;
-      grid-template-areas: "productContainer shoppingCart" "productContainer shoppingCart ";
+      grid-template-areas: "productContainer shoppingCart";
 }
 
 div.shop-container section.product-panel {
   -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   grid-area: productContainer;
 }
@@ -318,7 +317,6 @@ div.shop-container section.product-panel div.panel-body {
 
 div.shop-container section.shopping-cart {
   -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
   -ms-grid-column: 2;
   grid-area: shoppingCart;
 }
