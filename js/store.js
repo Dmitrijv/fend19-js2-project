@@ -47,10 +47,32 @@ function loadStore(productsJson) {
     addToCartButtons[i].addEventListener("click", clickAddToCartButton);
   }
 
+  // make possible adding items to cart by pressing inter while choosing stack size
+  const productStackInputFields = document.querySelectorAll(".product-panel .panel-body input[data-item-id]");
+  for (var i = 0; i < productStackInputFields.length; i++) {
+    productStackInputFields[i].addEventListener("keyup", onKeyPressedInInputElement);
+  }
+
   document.querySelector("#clear-cart-button").addEventListener("click", clearShoppingCart);
   document.querySelector("#to-order-button").addEventListener("click", onToOrderClick);
 
   updateShoppingCartWindow();
+}
+
+function onKeyPressedInInputElement(event) {
+  if (event.keyCode === 13) {
+    const inputField = event.currentTarget;
+    const itemID = inputField.dataset.itemId;
+
+    const itemCount = Number(document.querySelector(`input[data-item-id="${itemID}"]`).value);
+    if (!itemCount || itemCount < 0) {
+      inputField.value = 1;
+      return;
+    }
+
+    addItemToShoppingCart(itemID, itemCount);
+    document.querySelector(`.product-card[data-item-id="${itemID}"]`).classList.add("in-basket");
+  }
 }
 
 function clickAddToCartButton(event) {
