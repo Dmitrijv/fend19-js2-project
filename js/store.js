@@ -1,10 +1,10 @@
-$(document).ready(function () {
+$(document).ready(function() {
   // load shop items from local json file
   const INVENTORY_DIR = "json/inventory.json";
   if (Modernizr.fetch) {
-    loadJsonByFetch(INVENTORY_DIR, loadStore);
+    shopLib.loadJsonByFetch(INVENTORY_DIR, loadStore);
   } else {
-    loadJsonByXhr(INVENTORY_DIR, loadStore);
+    shopLib.loadJsonByXhr(INVENTORY_DIR, loadStore);
   }
 });
 
@@ -42,7 +42,7 @@ function loadStore(productsJson) {
 
   assignButtonEvents();
   updateShoppingCartWindow();
-  checkOrderStatus()
+  checkOrderStatus();
 }
 
 function assignButtonEvents() {
@@ -55,7 +55,7 @@ function assignButtonEvents() {
   document.querySelector("#clear-cart-button").addEventListener("click", clearShoppingCart);
   // set up clear to order button
   document.querySelector("#to-order-button").addEventListener("click", onToOrderClick);
-  checkOrderStatus()
+  checkOrderStatus();
 }
 
 function clickAddToCartButton(event) {
@@ -143,7 +143,7 @@ function updateShoppingCartWindow() {
   for (var i = 0; i < addToCartButtons.length; i++) {
     addToCartButtons[i].addEventListener("click", onDeleteCartItem);
   }
-  checkOrderStatus()
+  checkOrderStatus();
 }
 
 function onCartItemStackUpdated(event) {
@@ -170,13 +170,17 @@ function onCartItemStackUpdated(event) {
 
   // update new price total for this item
   let itemPrice = inventory.find(item => item.id === Number(itemID)).price.value;
-  document.querySelector(`.item-stack-price[data-item-id="${itemID}"]`).textContent = (itemPrice * newStackSize).toFixed(2);
+  document.querySelector(`.item-stack-price[data-item-id="${itemID}"]`).textContent = (
+    itemPrice * newStackSize
+  ).toFixed(2);
 
   // update sub total for the entire cart
-  const newSubTotalValue = Object.keys(shoppingCart).reduce((total, id) => {
-    const item = inventory.find(item => item.id === Number(id));
-    return total + item.price.value * shoppingCart[id];
-  }, 0).toFixed(2);
+  const newSubTotalValue = Object.keys(shoppingCart)
+    .reduce((total, id) => {
+      const item = inventory.find(item => item.id === Number(id));
+      return total + item.price.value * shoppingCart[id];
+    }, 0)
+    .toFixed(2);
 
   document.querySelector(`#subtotal-value`).textContent = newSubTotalValue;
 }
@@ -186,7 +190,7 @@ function onDeleteCartItem(event) {
   const itemID = button.dataset.itemId;
   removeItemFromShoppingCart(itemID);
   document.querySelector(`.product-card[data-item-id="${itemID}"]`).classList.remove("in-basket");
-  checkOrderStatus()
+  checkOrderStatus();
 }
 
 function onToOrderClick() {
@@ -197,8 +201,8 @@ function onToOrderClick() {
 function checkOrderStatus() {
   const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
   if (Object.keys(shoppingCart).length == 0) {
-    document.querySelector('#to-order-button').setAttribute('disabled', '')
+    document.querySelector("#to-order-button").setAttribute("disabled", "");
   } else {
-    document.querySelector('#to-order-button').removeAttribute("disabled");
+    document.querySelector("#to-order-button").removeAttribute("disabled");
   }
 }
