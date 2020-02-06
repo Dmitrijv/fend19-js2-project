@@ -1,12 +1,10 @@
-$(document).ready(function () {
-  const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
-  const inventory = JSON.parse(sessionStorage.getItem("inventory"));
-  let orderList = document.querySelector(".order-list");
+$(document).ready(function() {
+  const shoppingCart = shopLib.getShoppingCart();
+  const inventory = shopLib.getInventory();
+
   let subTotal = 0;
   let itemsCountTotal = 0;
-  let today = new Date();
-  let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-  orderList.innerHTML = ``;
+  let orderList = document.querySelector(".order-list");
 
   Object.keys(shoppingCart).forEach(itemID => {
     const item = inventory.find(item => item.id === Number(itemID));
@@ -34,9 +32,9 @@ $(document).ready(function () {
     </tbody>
     `;
 
-  document.querySelector('.totalPrice').textContent = subTotal + " kr";
+  document.querySelector(".totalPrice").textContent = subTotal + " kr";
   document.querySelector(".products-amount").innerHTML = itemsCountTotal;
-  document.querySelector('.dateToday').textContent = date;
+  document.querySelector(".dateToday").textContent = new Date().toLocaleString().slice(0, -6);
 
   const confirmButton = document.querySelector(".confirm-order-button");
   if (itemsCountTotal === 0) {
@@ -50,7 +48,7 @@ $(document).ready(function () {
 
 function onOrderConfirmedClick(event) {
   if (confirm("Vill du bekräfta din order?")) {
-    localStorage.setItem("shoppingCart", JSON.stringify({}));
+    shopLib.clearShoppingCart();
     location.href = "/index.html";
   } else {
     event.preventDefault();
