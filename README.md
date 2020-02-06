@@ -1,6 +1,6 @@
 # FEND19 - JavaScript 2 – Project: Shopping cart
 
-![preview](/readme/shopBanner.jpg)
+![preview](img/readme/shopBanner.jpg)
 
 ## Description
 
