@@ -88,5 +88,29 @@
     "picture": "10.jpg",
     "price": { "currency": "kr", "value": 35 },
     "rating": 3
+  },
+  {
+    "id": 11,
+    "title": "Cashewnötter 400g",
+    "type": "nötter",
+    "description": "Cashewnötter är en av våra mest populära nötsorter. Även om cashewnötter kanske framför allt används som ett knaprigt tilltugg till fredagsmyset har de en potential att vara mycket mer än så..",
+    "picture": "11.jpg",
+    "price": {
+      "currency": "kr",
+      "value": 70
+    },
+    "rating": 4
+  },
+  {
+    "id": 12,
+    "title": "Banan 1kg",
+    "type": "Frukt",
+    "description": "Bananerna är nämligen inte bara goda, de är otroligt nyttiga så se till att fylla på fruktkorgen med den gyllene frukten som är ett perfekt mellanmål.",
+    "picture": "9.jpg",
+    "price": {
+      "currency": "kr",
+      "value": 27
+    },
+    "rating": 5
   }
 ]
