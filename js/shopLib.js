@@ -33,7 +33,8 @@ shopLib = (function() {
     /*
     returns a json that follows the following structure:
     {
-      "item id": item count
+      "item1id": itemCount,
+      "item2id": itemCount
     } 
     */
     getShoppingCart: function() {
