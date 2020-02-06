@@ -115,17 +115,12 @@ function updateShoppingCartWindow() {
   const inventory = shopLib.getInventory();
   const shoppingCart = shopLib.getShoppingCart();
 
-  let totalPrice = 0;
-  let totalItemCount = 0;
   let htmlPayload = ``;
   Object.keys(shoppingCart).forEach(itemID => {
     const item = inventory.find(item => item.id === Number(itemID));
-
     const itemCount = Number(shoppingCart[itemID]);
-    const stackPrice = item.price.value * itemCount;
+    const stackPrice = (item.price.value * itemCount).toFixed(2);
 
-    totalPrice += stackPrice;
-    totalItemCount += itemCount;
     htmlPayload += `
     <div class="cart-item">
       <h4>${item.title}</h4>
@@ -140,8 +135,19 @@ function updateShoppingCartWindow() {
     </div>`;
   });
 
-  document.querySelector("#subtotal-value").textContent = totalPrice;
-  document.querySelector("#cart-item-count").textContent = totalItemCount;
+  // update the number of items in the cart
+  document.querySelector("#cart-item-count").textContent = Object.values(shoppingCart).reduce(
+    (sum, value) => sum + Number(value),
+    0
+  );
+
+  // update price sub total
+  document.querySelector(`#subtotal-value`).textContent = Object.keys(shoppingCart)
+    .reduce((total, id) => {
+      const item = inventory.find(item => item.id === Number(id));
+      return total + item.price.value * shoppingCart[id];
+    }, 0)
+    .toFixed(2);
 
   if (htmlPayload.length === 0) {
     document.querySelector(".cart-empty-message").style.display = "block";
