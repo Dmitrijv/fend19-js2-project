@@ -12,13 +12,12 @@ function loadStore(productsJson) {
   shopLib.setInventory(productsJson);
   const shoppingCart = shopLib.getShoppingCart();
 
-  let htmlPayload = ``;
-  const productPanel = document.querySelector(".product-panel .panel-body");
-
   // generate item HTML and append it to store panel
+  const productPanel = document.querySelector(".product-panel .panel-body");
   productsJson.forEach(item => {
     const inBasketFlag = shoppingCart[item.id] ? "in-basket" : "";
-    htmlPayload += `
+
+    let cardHtml = `
     <div data-item-id="${item.id}" class="product-card ${inBasketFlag}">
       <div class="product-description-wrapper">
           <img class="img-fluid product-cover" src="img/product/product-${item.id}.jpg" alt="${item.title}" />
@@ -32,21 +31,12 @@ function loadStore(productsJson) {
         <input data-item-id="${item.id}" type="number" min="1" max="1000" class="cart-item-qty" value="1" />
       </div>
     </div>`;
+
+    const itemCard = new DOMParser().parseFromString(cardHtml, "text/html");
+    itemCard.querySelector("button[data-item-id]").addEventListener("click", clickAddToCartButton);
+    itemCard.querySelector("input[data-item-id]").addEventListener("keyup", onKeyPressedInInputElement);
+    productPanel.appendChild(itemCard.querySelector("div.product-card"));
   }); // end of iterating through shop inventory
-
-  productPanel.innerHTML = htmlPayload.length > 0 ? htmlPayload : "Failed to load store items.";
-
-  // add event listeners to "Add to cart" buttons
-  const addToCartButtons = document.querySelectorAll(".product-panel .panel-body button[data-item-id]");
-  for (var i = 0; i < addToCartButtons.length; i++) {
-    addToCartButtons[i].addEventListener("click", clickAddToCartButton);
-  }
-
-  // make possible adding items to cart by pressing inter while choosing stack size
-  const productStackInputFields = document.querySelectorAll(".product-panel .panel-body input[data-item-id]");
-  for (var i = 0; i < productStackInputFields.length; i++) {
-    productStackInputFields[i].addEventListener("keyup", onKeyPressedInInputElement);
-  }
 
   document.querySelector("#clear-cart-button").addEventListener("click", clearShoppingCart);
   document.querySelector("#to-order-button").addEventListener("click", onToOrderClick);
