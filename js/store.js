@@ -121,8 +121,9 @@ function updateShoppingCartWindow() {
     </div>`;
 
     const listItem = new DOMParser().parseFromString(itemHtml, "text/html");
-    listItem.addEventListener("change", onCartItemStackUpdated);
-    listItem.addEventListener("click", onDeleteCartItem);
+    console.log(listItem);
+    listItem.querySelector("input[data-item-id]").addEventListener("change", onCartItemStackUpdated);
+    listItem.querySelector("button[data-item-id]").addEventListener("click", onDeleteCartItem);
     shoppingCartPanel.appendChild(listItem.querySelector("div.cart-item"));
   }); // end of iterating through cart items
 
