@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 function loadStore(productsJson) {
   shopLib.setInventory(productsJson);
-  const shoppingCart = getShoppingCart();
+  const shoppingCart = shopLib.getShoppingCart();
 
   let htmlPayload = ``;
   const productPanel = document.querySelector(".product-panel .panel-body");
@@ -79,7 +79,7 @@ function clickAddToCartButton(event) {
 }
 
 function addItemToShoppingCart(itemID, itemCount) {
-  const shoppingCart = getShoppingCart();
+  const shoppingCart = shopLib.getShoppingCart();
   shoppingCart[itemID] = Number(shoppingCart[itemID] + itemCount) || itemCount;
   shopLib.setShoppingCart(shoppingCart);
   updateShoppingCartWindow();
