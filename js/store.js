@@ -95,18 +95,16 @@ function clearShoppingCart() {
 }
 
 function updateShoppingCartWindow() {
-  const shoppingCartPanel = document.querySelector(".cart-item-list");
-
   const inventory = shopLib.getInventory();
   const shoppingCart = shopLib.getShoppingCart();
 
-  let htmlPayload = ``;
+  const shoppingCartPanel = document.querySelector(".cart-item-list");
   Object.keys(shoppingCart).forEach(itemID => {
     const item = inventory.find(item => item.id === Number(itemID));
     const itemCount = Number(shoppingCart[itemID]);
     const stackPrice = (item.price.value * itemCount).toFixed(2);
 
-    htmlPayload += `
+    const itemHtml = `
     <div class="cart-item">
       <h4>${item.title}</h4>
       <div class="cart-item-summary">
@@ -120,7 +118,12 @@ function updateShoppingCartWindow() {
       <path d="M10.185,1.417c-4.741,0-8.583,3.842-8.583,8.583c0,4.74,3.842,8.582,8.583,8.582S18.768,14.74,18.768,10C18.768,5.259,14.926,1.417,10.185,1.417 M10.185,17.68c-4.235,0-7.679-3.445-7.679-7.68c0-4.235,3.444-7.679,7.679-7.679S17.864,5.765,17.864,10C17.864,14.234,14.42,17.68,10.185,17.68 M10.824,10l2.842-2.844c0.178-0.176,0.178-0.46,0-0.637c-0.177-0.178-0.461-0.178-0.637,0l-2.844,2.841L7.341,6.52c-0.176-0.178-0.46-0.178-0.637,0c-0.178,0.176-0.178,0.461,0,0.637L9.546,10l-2.841,2.844c-0.178,0.176-0.178,0.461,0,0.637c0.178,0.178,0.459,0.178,0.637,0l2.844-2.841l2.844,2.841c0.178,0.178,0.459,0.178,0.637,0c0.178-0.176,0.178-0.461,0-0.637L10.824,10z"></path>
     </svg></button>
     </div>`;
-  });
+
+    const listItem = new DOMParser().parseFromString(itemHtml, "text/html");
+    listItem.addEventListener("change", onCartItemStackUpdated);
+    listItem.addEventListener("click", onDeleteCartItem);
+    shoppingCartPanel.appendChild(listItem.querySelector("div.cart-item"));
+  }); // end of iterating through cart items
 
   // update the number of items in the cart
   document.querySelector("#cart-item-count").textContent = Object.values(shoppingCart).reduce(
@@ -136,24 +139,12 @@ function updateShoppingCartWindow() {
     }, 0)
     .toFixed(2);
 
-  if (htmlPayload.length === 0) {
+  // show "Cart is empty message" if the cart is empty
+  if (Object.keys(shoppingCart).length === 0) {
     document.querySelector(".cart-empty-message").style.display = "block";
     shoppingCartPanel.innerHTML = "";
   } else {
     document.querySelector(".cart-empty-message").style.display = "none";
-    shoppingCartPanel.innerHTML = htmlPayload;
-  }
-
-  // add event listeners to all item quantity input fields
-  const stackInputs = document.querySelectorAll(".cart-item input.cart-item-qty");
-  for (var i = 0; i < stackInputs.length; i++) {
-    stackInputs[i].addEventListener("change", onCartItemStackUpdated);
-  }
-
-  // add event listeners to all "X" buttons
-  const addToCartButtons = document.querySelectorAll(".cart-item button.remove-cart-item");
-  for (var i = 0; i < addToCartButtons.length; i++) {
-    addToCartButtons[i].addEventListener("click", onDeleteCartItem);
   }
 
   // disable checkout button if no items are in the cart
