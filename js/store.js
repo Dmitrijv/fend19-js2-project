@@ -28,7 +28,7 @@ function loadStore(productsJson) {
       <div class="product-interaction-wrapper">
         <hr />
         <p class="product-price"><span class='product-price-value'>${item.price.value}</span> ${item.price.currency}</p>
-        <button data-item-id="${item.id}" type="button" class="btn btn-success">Add to cart</button>
+        <button data-item-id="${item.id}" type="button" class="btn btn-success">Lägg i kundvagnen</button>
         <input data-item-id="${item.id}" type="number" min="1" max="1000" class="cart-item-qty" value="1" />
       </div>
     </div>`;
