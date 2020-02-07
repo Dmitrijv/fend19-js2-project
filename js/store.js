@@ -99,6 +99,7 @@ function updateShoppingCartWindow() {
   const shoppingCart = shopLib.getShoppingCart();
 
   const shoppingCartPanel = document.querySelector(".cart-item-list");
+  shoppingCartPanel.innerHTML = "";
   Object.keys(shoppingCart).forEach(itemID => {
     const item = inventory.find(item => item.id === Number(itemID));
     const itemCount = Number(shoppingCart[itemID]);
