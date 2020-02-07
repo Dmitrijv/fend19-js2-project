@@ -40,7 +40,7 @@ $(document).ready(function() {
 
   document.querySelector(".totalPrice").textContent = subTotal + " kr";
   document.querySelector(".products-amount").innerHTML = itemsCountTotal;
-  document.querySelector(".dateToday").textContent = new Date().toLocaleString().slice(0, -6);
+  document.querySelector(".dateToday").textContent = new Date().toLocaleString().slice(0, 16);
 
   const myBtn2 = document.querySelector(".goback-Btn");
   myBtn2.addEventListener("click", function() {
