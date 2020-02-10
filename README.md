@@ -24,7 +24,7 @@ $(document).ready(function() {
 
 ### Populating products panel
 
-Product cards are generated from the json object. Each
+Product cards are created by iterating through inventory items and generating HTML code.
 
 ```js
   // generate item HTML and append it to store panel
