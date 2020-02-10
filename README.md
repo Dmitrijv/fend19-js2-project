@@ -127,3 +127,23 @@ function removeItemFromShoppingCart(itemID) {
   updateShoppingCartWindow();
 }
 ```
+
+### Proceeding to checkout
+When there is at least one item in the shopping cart "Till kassan" (Swedish for "To checkout") button becomes enabled. User is redirected to `order.html` page where they can preview order details and confirm the purchase.
+```js
+function onToOrderClick() {
+  const shoppingCart = shopLib.getShoppingCart();
+  if (Object.keys(shoppingCart).length > 0) location.href = "/order.html";
+}
+```
+If the order is confirmed the shopping cart is emptied and the user is redirected back to the store page.
+```js
+function onOrderConfirmedClick(event) {
+  if (confirm("Vill du bekräfta din order?")) {
+    shopLib.clearShoppingCart();
+    location.href = "/index.html";
+  } else {
+    event.preventDefault();
+  }
+}
+```
