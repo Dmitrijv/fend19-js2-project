@@ -24,7 +24,7 @@ $(document).ready(function() {
 
 ### Populating products panel
 
-Product cards are generated from the json object. Each
+Product cards are created by iterating through inventory items and generating HTML code.
 
 ```js
   // generate item HTML and append it to store panel
@@ -47,7 +47,7 @@ Product cards are generated from the json object. Each
     </div>`;
 ```
 
-DOMParser API is used to create DOM elements out of generated html code so that event listeners can be attatched to input elements in the same loop. Item cards are then appended to the product panel.
+DOMParser API is used to create DOM elements out of generated html code so that event listeners can be added in the same loop. Item cards are then appended to the product panel.
 
 ```js
 const itemCard = new DOMParser().parseFromString(cardHtml, "text/html");
@@ -104,7 +104,7 @@ The shopping cart is represented by a simple JSON object where item IDs are used
 
 ### Adding items to cart
 
-Items can be added to cart by pressing the green "Add to cart" button or selecting the corresponding input field and pressing enter. Once in the shopping cart, the desired item quantity can be adjusted with a separate input field.
+Items can be added to cart by pressing the green "Add to cart" button or selecting the corresponding input field and pressing enter. Once in the shopping cart, item quantity can be adjusted with a separate input field.
 
 ```js
 function addItemToShoppingCart(itemID, itemCount) {
@@ -123,5 +123,28 @@ function removeItemFromShoppingCart(itemID) {
   delete shoppingCart[itemID];
   shopLib.setShoppingCart(shoppingCart);
   updateShoppingCartWindow();
+}
+```
+
+### Proceeding to checkout
+
+When there is at least one item in the shopping cart "Till kassan" (Swedish for "To checkout") button becomes enabled. User is redirected to `order.html` page where they can preview order details and confirm the purchase.
+
+```js
+function onToOrderClick() {
+  const shoppingCart = shopLib.getShoppingCart();
+  if (Object.keys(shoppingCart).length > 0) location.href = "/order.html";
+}
+```
+If the order is confirmed the shopping cart is emptied and the user is redirected back to the store page.
+
+```js
+function onOrderConfirmedClick(event) {
+  if (confirm("Vill du bekräfta din order?")) {
+    shopLib.clearShoppingCart();
+    location.href = "/index.html";
+  } else {
+    event.preventDefault();
+  }
 }
 ```
