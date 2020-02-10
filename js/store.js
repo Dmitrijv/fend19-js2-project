@@ -33,8 +33,8 @@ function loadStore(productsJson) {
     </div>`;
 
     const itemCard = new DOMParser().parseFromString(cardHtml, "text/html");
-    itemCard.querySelector(`button[data-item-id="${itemID}"]`).addEventListener("click", clickAddToCartButton);
-    itemCard.querySelector(`input[data-item-id="${itemID}"]`).addEventListener("keyup", onKeyPressedInInputElement);
+    itemCard.querySelector(`button[data-item-id="${item.id}"]`).addEventListener("click", clickAddToCartButton);
+    itemCard.querySelector(`input[data-item-id="${item.id}"]`).addEventListener("keyup", onKeyPressedInInputElement);
     productPanel.appendChild(itemCard.querySelector("div.product-card"));
   }); // end of iterating through shop inventory
 
@@ -121,8 +121,8 @@ function updateShoppingCartWindow() {
 
     //`input[data-item-id="${itemID}"]`
     const listItem = new DOMParser().parseFromString(itemHtml, "text/html");
-    listItem.querySelector(`input[data-item-id="${itemID}"]`).addEventListener("change", onCartItemStackUpdated);
-    listItem.querySelector(`button[data-item-id="${itemID}"]`).addEventListener("click", onDeleteCartItem);
+    listItem.querySelector(`input[data-item-id="${item.id}"]`).addEventListener("change", onCartItemStackUpdated);
+    listItem.querySelector(`button[data-item-id="${item.id}"]`).addEventListener("click", onDeleteCartItem);
     shoppingCartPanel.appendChild(listItem.querySelector("div.cart-item"));
   }); // end of iterating through cart items
 
