@@ -100,9 +100,11 @@ Users shopping cart is saved to session storage and is updated every time an ite
 
 The shopping cart is represented by a simple JSON object where item IDs are used as keys to store the quantity of the corresponding item.
 
-![preview](img/readme/cart.png)
+![preview](img/readme/cart-local-storage.png)
 
 ### Adding items to cart
+
+![preview](img/readme/cart-demo.gif)
 
 Items can be added to cart by pressing the green "Add to cart" button or selecting the corresponding input field and pressing enter. Once in the shopping cart, the desired item quantity can be adjusted with a separate input field.
 
