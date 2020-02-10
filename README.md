@@ -1,6 +1,6 @@
 # FEND19 - JavaScript 2 – Project: Shopping cart
 
-![preview](img/readme/shopBanner.jpg)
+![preview](img/readme/preview.png)
 
 ## Description
 
@@ -27,11 +27,11 @@ $(document).ready(function() {
 Product cards are generated from the json object. Each
 
 ```js
-// generate item HTML and append it to store panel
-let htmlPayload = ``;
-productsJson.forEach(item => {
-  const inBasketFlag = shoppingCart[item.id] ? "in-basket" : "";
-  htmlPayload += `
+  // generate item HTML and append it to store panel
+  const productPanel = document.querySelector(".product-panel .panel-body");
+  productsJson.forEach(item => {
+    const inBasketFlag = shoppingCart[item.id] ? "in-basket" : "";
+    let cardHtml = `
     <div data-item-id="${item.id}" class="product-card ${inBasketFlag}">
       <div class="product-description-wrapper">
           <img class="img-fluid product-cover" src="img/product/product-${item.id}.jpg" alt="${item.title}" />
@@ -41,14 +41,19 @@ productsJson.forEach(item => {
       <div class="product-interaction-wrapper">
         <hr />
         <p class="product-price"><span class='product-price-value'>${item.price.value}</span> ${item.price.currency}</p>
-        <button data-item-id="${item.id}" type="button" class="btn btn-success">Add to cart</button>
+        <button data-item-id="${item.id}" type="button" class="btn btn-success">Lägg i kundvagnen</button>
         <input data-item-id="${item.id}" type="number" min="1" max="1000" class="cart-item-qty" value="1" />
       </div>
     </div>`;
-}); // end of iterating through shop inventory
+```
 
-const productPanel = document.querySelector(".product-panel .panel-body");
-productPanel.innerHTML = htmlPayload.length > 0 ? htmlPayload : "Failed to load store items.";
+DOMParser API is used to create DOM elements out of generated html code so that event listeners can be attatched to input elements in the same loop. Item cards are then appended to the product panel.
+
+```js
+const itemCard = new DOMParser().parseFromString(cardHtml, "text/html");
+itemCard.querySelector(`button[data-item-id="${item.id}"]`).addEventListener("click", clickAddToCartButton);
+itemCard.querySelector(`input[data-item-id="${item.id}"]`).addEventListener("keyup", onKeyPressedInInputElement);
+productPanel.appendChild(itemCard.querySelector("div.product-card"));
 ```
 
 Data attribute is used to mark HTML elements that will trigger events to make it easy to crossreference shop windows and corresponding inventory items.
