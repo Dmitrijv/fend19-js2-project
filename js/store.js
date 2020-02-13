@@ -17,6 +17,9 @@ function loadStore(productsJson) {
   productsJson.forEach(item => {
     const inBasketFlag = shoppingCart[item.id] ? "in-basket" : "";
 
+    let n = 5;
+    let number = `(${n}xx) xxxx-xxxxx`;
+
     let cardHtml = `
     <div data-item-id="${item.id}" class="product-card ${inBasketFlag}">
       <div class="product-description-wrapper">
@@ -121,7 +124,6 @@ function updateShoppingCartWindow() {
     </div>`;
 
     const listItem = new DOMParser().parseFromString(itemHtml, "text/html");
-    console.log(listItem);
     listItem.querySelector("input[data-item-id]").addEventListener("change", onCartItemStackUpdated);
     listItem.querySelector("button[data-item-id]").addEventListener("click", onDeleteCartItem);
     shoppingCartPanel.appendChild(listItem.querySelector("div.cart-item"));
@@ -161,14 +163,15 @@ function onCartItemStackUpdated(event) {
   const input = event.currentTarget;
   const itemID = input.dataset.itemId;
 
+  const shoppingCart = shopLib.getShoppingCart();
+
   let newStackSize = Number(input.value);
   // set default stack size to 1 if input is invalid
   if (!newStackSize || newStackSize < 0) {
-    input.value = 1;
-    newStackSize = 1;
+    input.value = shoppingCart[itemID];
+    newStackSize = shoppingCart[itemID];
   }
 
-  const shoppingCart = shopLib.getShoppingCart();
   const inventory = shopLib.getInventory();
 
   shoppingCart[itemID] = newStackSize;
