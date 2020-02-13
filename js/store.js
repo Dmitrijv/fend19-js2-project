@@ -124,13 +124,8 @@ function updateShoppingCartWindow() {
 
     //`input[data-item-id="${itemID}"]`
     const listItem = new DOMParser().parseFromString(itemHtml, "text/html");
-<<<<<<< HEAD
-    listItem.querySelector("input[data-item-id]").addEventListener("change", onCartItemStackUpdated);
-    listItem.querySelector("button[data-item-id]").addEventListener("click", onDeleteCartItem);
-=======
     listItem.querySelector(`input[data-item-id="${item.id}"]`).addEventListener("change", onCartItemStackUpdated);
     listItem.querySelector(`button[data-item-id="${item.id}"]`).addEventListener("click", onDeleteCartItem);
->>>>>>> 086fceeee4f9380f05b9966338d29bb23503da5b
     shoppingCartPanel.appendChild(listItem.querySelector("div.cart-item"));
   }); // end of iterating through cart items
 
