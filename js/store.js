@@ -36,8 +36,8 @@ function loadStore(productsJson) {
     </div>`;
 
     const itemCard = new DOMParser().parseFromString(cardHtml, "text/html");
-    itemCard.querySelector("button[data-item-id]").addEventListener("click", clickAddToCartButton);
-    itemCard.querySelector("input[data-item-id]").addEventListener("keyup", onKeyPressedInInputElement);
+    itemCard.querySelector(`button[data-item-id="${item.id}"]`).addEventListener("click", clickAddToCartButton);
+    itemCard.querySelector(`input[data-item-id="${item.id}"]`).addEventListener("keyup", onKeyPressedInInputElement);
     productPanel.appendChild(itemCard.querySelector("div.product-card"));
   }); // end of iterating through shop inventory
 
@@ -113,7 +113,6 @@ function updateShoppingCartWindow() {
       <h4>${item.title}</h4>
       <div class="cart-item-summary">
       <img class="product-cover-small" src="img/product/product-${item.id}.jpg" alt="${item.title}" />
-      
         <span data-item-id="${item.id}" class="item-price">${item.price.value}</span> ${item.price.currency} x
         <input data-item-id="${item.id}" type="number" min="1" max="1000" class="cart-item-qty" value="${itemCount}" /> =
         <span data-item-id="${item.id}" class="item-stack-price">${stackPrice}</span> kr
@@ -123,9 +122,15 @@ function updateShoppingCartWindow() {
     </svg></button>
     </div>`;
 
+    //`input[data-item-id="${itemID}"]`
     const listItem = new DOMParser().parseFromString(itemHtml, "text/html");
+<<<<<<< HEAD
     listItem.querySelector("input[data-item-id]").addEventListener("change", onCartItemStackUpdated);
     listItem.querySelector("button[data-item-id]").addEventListener("click", onDeleteCartItem);
+=======
+    listItem.querySelector(`input[data-item-id="${item.id}"]`).addEventListener("change", onCartItemStackUpdated);
+    listItem.querySelector(`button[data-item-id="${item.id}"]`).addEventListener("click", onDeleteCartItem);
+>>>>>>> 086fceeee4f9380f05b9966338d29bb23503da5b
     shoppingCartPanel.appendChild(listItem.querySelector("div.cart-item"));
   }); // end of iterating through cart items
 
