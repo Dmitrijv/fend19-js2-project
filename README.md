@@ -81,7 +81,7 @@ Inventory item data is saved to session storage when the store is loaded for the
     },
 ```
 
-Users shopping cart is saved to session storage and is updated every time an item is added or removed from the cart.
+Users shopping cart is saved to local storage and is updated every time an item is added or removed from the cart.
 
 ```js
     getShoppingCart: function() {
