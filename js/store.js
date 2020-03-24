@@ -51,11 +51,14 @@ function onKeyPressedInInputElement(event) {
   if (event.keyCode === 13) {
     const inputField = event.currentTarget;
     const itemID = inputField.dataset.itemId;
+    if (!itemID) return;
 
-    const itemCount = Number(document.querySelector(`input[data-item-id="${itemID}"]`).value);
+    const itemCount = Math.ceil(Number(inputField.value));
     if (!itemCount || itemCount < 0) {
       inputField.value = 1;
       return;
+    } else {
+      inputField.value = itemCount;
     }
 
     addItemToShoppingCart(itemID, itemCount);
@@ -66,7 +69,12 @@ function onKeyPressedInInputElement(event) {
 function clickAddToCartButton(event) {
   const button = event.currentTarget;
   const itemID = button.dataset.itemId;
-  const itemCount = Number(document.querySelector(`input[data-item-id="${itemID}"]`).value);
+  const itemCountInputField = document.querySelector(`input[data-item-id="${itemID}"]`);
+  const itemCount = Math.ceil(Number(itemCountInputField.value));
+
+  // update the number displayed in the input field in case the original input was rounded up
+  itemCountInputField.value = itemCount;
+
   addItemToShoppingCart(itemID, itemCount);
   document.querySelector(`.product-card[data-item-id="${itemID}"]`).classList.add("in-basket");
 }
