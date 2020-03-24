@@ -165,11 +165,13 @@ function onCartItemStackUpdated(event) {
 
   const shoppingCart = shopLib.getShoppingCart();
 
-  let newStackSize = Number(input.value);
+  let newStackSize = Math.ceil(Number(input.value));
   // set default stack size to 1 if input is invalid
   if (!newStackSize || newStackSize < 0) {
     input.value = shoppingCart[itemID];
     newStackSize = shoppingCart[itemID];
+  } else {
+    input.value = newStackSize;
   }
 
   const inventory = shopLib.getInventory();
